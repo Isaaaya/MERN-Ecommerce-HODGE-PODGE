@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Tilt+Neon&family=Roboto+Slab&family=Tilt+Warp&display=swap');
+
+
+
+html {
+    margin: 0 auto;
+	box-sizing: border-box;
+}
+
+* {
+	font-family: 'Roboto Slab', 'sans-serif'
+  }
+  
