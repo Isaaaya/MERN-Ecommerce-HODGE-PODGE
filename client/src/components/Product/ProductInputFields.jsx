@@ -30,8 +30,9 @@ const ProductsInputFields = ({ product, setProduct, mode }) => {
           />
         ))}
       </div>
-      {((mode === "update" && product?.description) ||
-        (mode === "addProduct" && !product?.title)) && (
+      {((mode === "update" &&
+        (product?.description || product?.extraDetails)) ||
+        mode === "addProduct") && (
         <>
           <Tiptap
             content={product?.description}
