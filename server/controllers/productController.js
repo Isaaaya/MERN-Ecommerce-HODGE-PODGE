@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const asyncHandler = require('express-async-handler');
 const { Product, User } = require('../models/index');
 
-
 exports.listProducts = asyncHandler(async (req, res) => {
     const { productCollection, category, subcategory, price, sort, search, available, images } = req.query;
 
@@ -37,9 +36,8 @@ exports.listProducts = asyncHandler(async (req, res) => {
 
     if (images?.length === 1) {
         if (images[0] === 'images') {
-            filter[`images.0`] = { "$exists": true }
-        } else filter[`images.1`] = { "$exists": false }
-
+            filter.images = { $ne: [] }
+        } else filter.images = { $size: 0 }
     };
 
     const getSortingType = () => {

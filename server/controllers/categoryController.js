@@ -15,7 +15,7 @@ exports.listCategories = asyncHandler(async (req, res) => {
             path: 'productCollection subcategories',
             select: 'title',
         }).lean()];
-        res.status(200).json({ categories });
+        res.status(200).json({ categories, totalPages: 1 });
     };
 
     const categories = await Category.find(filter).skip(skip).limit(limit).populate({

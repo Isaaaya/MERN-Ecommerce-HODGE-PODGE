@@ -11,7 +11,7 @@ export const useGetProducts = ({ configData }) => {
         isLoading: areProductsLoading, isPlaceholderData: isProductsPlaceholderData } = useQuery({
             queryKey: ["products", configData],
             queryFn: () => getInstancesAPI(productConfigData),
-            enabled: !!configData,
+            enabled: !!productConfigData,
         });
 
     return { products: productsData?.products, productsTotalPages: productsData?.totalPages, hasProductsErrorOccurred, isProductsPlaceholderData, areProductsLoading }

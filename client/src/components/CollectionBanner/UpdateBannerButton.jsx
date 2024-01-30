@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "components/common";
 
 const UpdateBannerButton = ({ updateBanner, isUpdateBannerPending }) => {

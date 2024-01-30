@@ -1,12 +1,11 @@
-import React from "react";
+import { Button } from "components/common";
 import { Link } from "react-router-dom";
-import { Button } from "components/common/index";
 
-const CheckOutButton = ({ setIsCartOpen }) => {
+const CheckOutButton = ({ closeCart }) => {
   return (
     <Link to="/checkout">
       <Button
-        onClick={() => setIsCartOpen((prevState) => !prevState)}
+        onClick={closeCart}
         caption="Check Out"
         theme="basicDark"
         extraStyles="w-full h-12"

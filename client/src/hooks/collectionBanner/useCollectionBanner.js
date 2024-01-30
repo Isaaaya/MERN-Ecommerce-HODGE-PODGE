@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getInstanceByIdAPI } from "api/instance";
+import { useGetInstanceById } from "hooks/instance/useGetInstanceById";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createCollectionBannerAPI, updateCollectionBannerAPI, deleteCollectionBannerAPI } from "api/productCollection";
@@ -17,11 +16,10 @@ export const useCollectionBanner = ({ productCollectionId }) => {
     });
     const [mode, setMode] = useState("add");
 
-    const { data: collection } = useQuery({
-        queryKey: ["collection", productCollectionId],
-        queryFn: () => getInstanceByIdAPI({ instanceType: "productCollections", instanceId: productCollectionId }),
-        enabled: !!productCollectionId
-    });
+    const { groupTypeInstance: collection } = useGetInstanceById({
+        instanceType: "productCollections",
+        instanceId: productCollectionId,
+    })
 
     useEffect(() => {
         if (collection?.banner?.caption) {
@@ -43,9 +41,9 @@ export const useCollectionBanner = ({ productCollectionId }) => {
     });
 
     const { mutate: updateBanner, isPending: isUpdateBannerPending } = useMutation({
-        mutationFn: () => updateCollectionBannerAPI({ productCollectionId, banner }),
+        mutationFn: () => updateCollectionBannerAPI({ productCollectionId, updatedBanner: banner }),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["collection"] });
+            queryClient.invalidateQueries({ queryKey: ["productCollections"] });
             navigate("/admin/productCollections");
         },
     });
@@ -54,7 +52,7 @@ export const useCollectionBanner = ({ productCollectionId }) => {
     const { mutate: deleteBanner, isPending: isDeleteBannerPending } = useMutation({
         mutationFn: () => deleteCollectionBannerAPI({ productCollectionId }),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["collection"] });
+            queryClient.invalidateQueries({ queryKey: ["productCollections"] });
             navigate("/admin/productCollections");
         },
     });

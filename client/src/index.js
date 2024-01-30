@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ToastContainer } from 'react-toastify';
+import { HelmetProvider } from "react-helmet-async";
 import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient({
@@ -17,19 +18,16 @@ const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
-    <ToastContainer position="top-center"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="colored" />
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+      <ToastContainer position="top-center"
+        autoClose={4000}
+        closeOnClick
+        pauseOnFocusLoss
+        theme="colored" />
+    </HelmetProvider>
   </React.StrictMode>
 );
 

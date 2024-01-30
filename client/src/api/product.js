@@ -1,7 +1,11 @@
 import { API } from './index'
+import { getSearchQuery } from 'utils/functions/getSearchQuery';
 
-export const listProductsAPI = async ({ limit, search, productCollection, category, subcategory, page, sort, available, images, price }) => {
-    const { data } = await API.get(`/products?limit=${limit || ''}&search=${search || ''}&productCollection=${productCollection || ''}&category=${category || ''}&subcategory=${subcategory || ''}&page=${page || ''}&sort=${sort}${available || ''}${images}${price ? '&price=' + price : ''}`);
+export const listProductsAPI = async ({ ...filters }) => {
+    const { searchQuery } = getSearchQuery({ filters, exeptions: ['available', 'images'] })
+
+    const { data } = await API.get(`/products?${searchQuery}`);
     return data;
+
 };
 

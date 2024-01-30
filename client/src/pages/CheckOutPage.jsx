@@ -1,11 +1,10 @@
-import React from "react";
 import { getUserData } from "utils/functions/getUserData";
 import { useGetUserCart } from "hooks/cart/useGetUserCart";
 import { useHandleOrder } from "hooks/order/useHandleOrder";
 
-import { Container } from "components/Wrappers";
-import { OrderArticle } from "components/Order/index";
-import { CheckOutForm, CheckOutCart } from "components/CheckOut/index";
+import { Container } from "layout";
+import { OrderArticle } from "components/Order";
+import { CheckOutForm, CheckOutCart } from "components/CheckOut";
 
 const CheckOutPage = () => {
   const user = getUserData();

@@ -1,4 +1,3 @@
-import React from "react";
 import { useScreenSize } from "hooks/screenSize/useScreenSize";
 
 const InstancesTableSkeleton = ({ colsCount, rowsCount }) => {

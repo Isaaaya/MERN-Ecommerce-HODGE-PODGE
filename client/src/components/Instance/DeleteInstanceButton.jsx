@@ -1,19 +1,27 @@
 import { WarningModal } from "components/common";
 
-import { TrashIcon } from "components/Icons/index";
+import { TrashIcon } from "assets/icons";
 import { useState } from "react";
 
 const DeleteInstanceButton = ({ instanceId }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isWarningModalOpen, setIsWarningModalOpen] = useState(false);
+
+  const openWarningModal = () => {
+    setIsWarningModalOpen(true);
+  };
+
+  const closeWarningModal = () => {
+    setIsWarningModalOpen(false);
+  };
 
   return (
     <>
-      <button onClick={() => setIsModalOpen(true)}>
-        <TrashIcon />
+      <button onClick={openWarningModal}>
+        <TrashIcon width="25" height="25" />
       </button>
       <WarningModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
+        isWarningModalOpen={isWarningModalOpen}
+        closeWarningModal={closeWarningModal}
         instanceId={instanceId}
       />
     </>

@@ -1,7 +1,6 @@
-import React from "react";
 import { handleCheckbox } from "utils/functions/handleCheckbox";
 
-import { ArrowRightIcon, ArrowLeftIcon } from "components/Icons";
+import { ArrowRightIcon, ArrowLeftIcon } from "assets/icons";
 
 const ImagesFilter = ({
   filters,
@@ -15,7 +14,7 @@ const ImagesFilter = ({
         onClick={() => setIsFilterExpanded((prevState) => !prevState)}
         className="flex items-center justify-between w-[90%]"
       >
-        Images <ArrowRightIcon />
+        Images <ArrowRightIcon width="25" height="25" />
       </button>
       <aside
         onClick={(e) => e.stopPropagation()}
@@ -27,7 +26,7 @@ const ImagesFilter = ({
           onClick={() => setIsFilterExpanded((prevState) => !prevState)}
           className="flex items-center justify-between w-[90%]"
         >
-          Images <ArrowLeftIcon />
+          Images <ArrowLeftIcon width="25" height="25" />
         </button>
         <div className="flex items-center gap-3">
           <label htmlFor="images">

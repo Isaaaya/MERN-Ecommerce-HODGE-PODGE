@@ -2,14 +2,15 @@ import { useParams, Link } from "react-router-dom";
 import { handleChange } from "utils/functions/handleChange";
 import { useCollectionBanner } from "hooks/collectionBanner/useCollectionBanner";
 
-import { ImageUpload } from "components/Image/index";
+import { ImageUpload } from "components/Image";
 import {
   ColorPickers,
   UpdateBannerButton,
   DeleteBannerButton,
   CreateBannerButton,
-} from "components/CollectionBanner/index";
-import { Container } from "components/Wrappers";
+} from "components/CollectionBanner";
+import { Container } from "layout";
+import { XMarkIcon } from "assets/icons";
 
 const HandleBannerPage = () => {
   const { productCollectionId } = useParams();
@@ -35,7 +36,9 @@ const HandleBannerPage = () => {
               <h3 className="text-3xl font-semibold capitalize">
                 {mode} Banner for Collection
               </h3>
-              <Link to="/admin/productCollections">x</Link>
+              <Link to="/admin/productCollections">
+                <XMarkIcon width="25" height="25" />
+              </Link>
             </div>
             <div className="flex flex-col gap-10">
               <div className="flex flex-col items-start gap-7 md:flex-row">

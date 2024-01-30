@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-
-import { ProductCard } from "components/Product/index";
-import { ProductCardSkeleton } from "../Skeletons";
+import { ProductCard } from "components/Product";
+import { ProductCardSkeleton } from "components/skeletons";
 
 const ProductsFeed = ({
   products,
@@ -20,16 +18,23 @@ const ProductsFeed = ({
     );
   else
     return (
-      <section className="grid grid-cols-2 gap-4 py-5 place-items-start lg:grid-cols-4">
+      <section className="grid grid-cols-2 gap-4 py-4 place-items-start lg:grid-cols-4 w-fit">
         {areProductsLoading &&
-          [...Array(2)]
-            .fill()
-            .map((_, index) => <ProductCardSkeleton key={index} />)}
+          Array.from({ length: 10 }, (_, index) => (
+            <ProductCardSkeleton key={index} />
+          ))}
         {products?.length > 0 &&
+          !areProductsLoading &&
           products?.map((product) => (
-            <Link to={`/products/${product?._id}`} key={product?._id}>
-              <ProductCard {...product} />
-            </Link>
+            <ProductCard
+              key={product?._id}
+              productId={product?._id}
+              title={product?.title}
+              images={product?.images}
+              productCollection={product?.productCollection}
+              price={product?.price}
+              productAvailableQuantity={product?.quantity}
+            />
           ))}
       </section>
     );

@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProductInfoSkeleton = () => {
   return (
     <div className="space-y-6 w-[60%] [&_div]:rounded-md [&_div_div]:bg-gray-200">

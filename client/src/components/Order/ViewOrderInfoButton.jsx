@@ -1,27 +1,17 @@
-import { useRef, useEffect } from "react";
-import { EyeIcon } from "components/Icons/index";
+import { useRef } from "react";
+import { EyeIcon } from "assets/icons";
+import { useClickOutside } from "hooks/clickOutside/useClickOutside";
 
 const ViewOrderInfoButton = ({ setShowOrderDetails }) => {
   const wrapperRef = useRef(null);
-  const handleClickOutside = (event) => {
-    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-      setShowOrderDetails(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside, false);
-    return () => {
-      document.removeEventListener("click", handleClickOutside, false);
-    };
-  }, []);
+  useClickOutside(wrapperRef, () => setShowOrderDetails(false));
 
   return (
     <button
       ref={wrapperRef}
       onClick={() => setShowOrderDetails((prevState) => !prevState)}
     >
-      <EyeIcon />
+      <EyeIcon width="25" height="25" />
     </button>
   );
 };

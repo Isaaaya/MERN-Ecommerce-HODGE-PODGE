@@ -1,4 +1,4 @@
-import { API } from "./index";
+import { API } from "api/index";
 
 export const handleAuthAPI = async ({ mode, user }) => {
     const { data } = await API.post(`http://localhost:4001/api/auth/${mode}`, user);

@@ -6,17 +6,14 @@ export const getCartAPI = async () => {
 };
 
 export const addToCartAPI = async ({ productId }) => {
-    const { data } = await API.post(`/products/${productId}/cart`);
-    return data;
+    return await API.post(`/products/${productId}/cart`);
 };
 
 export const removeOneFromCartAPI = async ({ productId }) => {
-    const { data } = await API.delete(`/products/${productId}/cart`);
-    return data;
+    return await API.delete(`/products/${productId}/cart`);
 };
 
 
 export const removeManyFromCartAPI = async ({ productId, productQuantityInCart }) => {
-    const { data } = await API.delete(`/products/${productId}/cart-remove-many/${productQuantityInCart}`);
-    return data;
+    return await API.delete(`/products/${productId}/cart-remove-many/${productQuantityInCart}`);
 };

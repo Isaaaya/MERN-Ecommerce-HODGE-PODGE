@@ -1,16 +1,16 @@
-import { API } from "./index"
+import { API } from "api/index"
 
-
-export const getCollectionCategoriesAPI = ({ productCollectionId }) => {
-    return API.get(`productCollections/${productCollectionId}/categories`).then((res) => res.data);
+export const getCollectionCategoriesAPI = async ({ productCollectionId }) => {
+    const { data } = await API.get(`productCollections/${productCollectionId}/categories`);
+    return data;
 };
 
 export const createCollectionBannerAPI = async ({ productCollectionId, banner }) => {
     return await API.post(`productCollections/${productCollectionId}/banner`, banner);
 };
 
-export const updateCollectionBannerAPI = async ({ productCollectionId, banner }) => {
-    return await API.put(`productCollections/${productCollectionId}/banner`, banner);
+export const updateCollectionBannerAPI = async ({ productCollectionId, updatedBanner }) => {
+    return await API.put(`productCollections/${productCollectionId}/banner`, updatedBanner);
 };
 
 

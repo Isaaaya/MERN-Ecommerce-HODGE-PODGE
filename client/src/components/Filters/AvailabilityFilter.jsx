@@ -1,7 +1,6 @@
-import React from "react";
 import { handleCheckbox } from "utils/functions/handleCheckbox";
 
-import { ArrowRightIcon, ArrowLeftIcon } from "../Icons";
+import { ArrowRightIcon, ArrowLeftIcon } from "assets/icons";
 
 const AvailabilityFilter = ({
   filters,
@@ -15,7 +14,7 @@ const AvailabilityFilter = ({
         onClick={() => setIsFilterExpanded((prevState) => !prevState)}
         className="flex items-center justify-between w-[90%]"
       >
-        Availability <ArrowRightIcon />
+        Availability <ArrowRightIcon width="25" height="25" />
       </button>
       <aside
         onClick={(e) => e.stopPropagation()}
@@ -27,7 +26,7 @@ const AvailabilityFilter = ({
           onClick={() => setIsFilterExpanded((prevState) => !prevState)}
           className="flex items-center justify-between w-[90%]"
         >
-          Availability <ArrowLeftIcon />
+          Availability <ArrowLeftIcon width="25" height="25" />
         </button>
         <div className="flex flex-col gap-3">
           <label htmlFor="inStock">

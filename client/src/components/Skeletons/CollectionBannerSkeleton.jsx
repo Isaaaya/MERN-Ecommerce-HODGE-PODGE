@@ -1,5 +1,3 @@
-import React from "react";
-
 const CollectionBannerSkeleton = () => {
   return (
     <article className="flex flex-col md:flex-row overflow-hidden rounded-xl h-[550px] md:h-[490px] bg-[#eeeeee] animate-pulse [&_div]:rounded-md">

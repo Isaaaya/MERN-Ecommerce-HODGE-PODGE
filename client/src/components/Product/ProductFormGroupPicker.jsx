@@ -4,7 +4,6 @@ const ProductFormGroupPicker = ({
   instances,
   defaultCaption,
   setProduct,
-  selectedGroupId,
   setSelectedGroupId,
   productField,
   defaultValue,
@@ -13,7 +12,6 @@ const ProductFormGroupPicker = ({
     instances,
     setProduct,
     productField,
-    selectedGroupId,
     setSelectedGroupId,
   });
 

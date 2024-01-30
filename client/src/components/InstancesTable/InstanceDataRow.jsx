@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { fetchByDotOperator } from "utils/functions/fetchByDotOperator";
+import { useGetInstanceGroupData } from "hooks/instance/useGetInstanceGroupData";
 
-import {
-  InstanceDataCell,
-  ActionsPanel,
-} from "components/InstancesTable/index";
+import { InstanceDataCell, ActionsPanel } from "components/InstancesTable";
 
-const InstanceDataRow = ({
-  instance,
-  fields,
-  fieldsTitles,
-  actionOptions,
-  advancedUpdate,
-}) => {
+const InstanceDataRow = ({ instance }) => {
   const [updatedInstance, setUpdatedInstance] = useState(null);
   const [isUpdatingMode, setIsUpdatingMode] = useState(false);
+
+  const { fields, fieldsTitles, advancedUpdate, actionOptions } =
+    useGetInstanceGroupData();
+
   const tdClasses =
     "border-[0.5px] md:border-none max-md:before:mr-10 break-words".split(" ");
+
   return (
     <tr
       key={instance?._id}
@@ -27,7 +24,7 @@ const InstanceDataRow = ({
       {fields.map((field, index) => (
         <td
           data-cell={fieldsTitles[index]}
-          className="max-md:before:content-[attr(data-cell)] before:capitalize before:font-bold [&_*]:w-[200px] [&_*]:md:w-[110px] [&_*]:rounded-md"
+          className="max-md:before:content-[attr(data-cell)] before:capitalize before:font-bold md:max-w-[120px] [&_*]:w-[200px] [&_*]:md:w-[110px] [&_*]:rounded-md overflow-x-auto"
           key={field}
         >
           <InstanceDataCell
@@ -42,7 +39,7 @@ const InstanceDataRow = ({
       ))}
       <td
         data-cell="actions"
-        className="max-md:before:content-[attr(data-cell)] before:capitalize before:font-bold"
+        className="max-md:before:content-[attr(data-cell)] before:capitalize before:font-bold md:w-[120px]"
       >
         <ActionsPanel
           actionOptions={actionOptions}

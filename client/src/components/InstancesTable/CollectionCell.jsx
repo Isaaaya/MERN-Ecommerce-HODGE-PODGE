@@ -1,6 +1,5 @@
-import React from "react";
-import { useListInstances } from "hooks/instance/useListInstances";
 import { useEffect } from "react";
+import { useListInstances } from "hooks/instance/useListInstances";
 
 const CollectionCell = ({
   isUpdatingMode,

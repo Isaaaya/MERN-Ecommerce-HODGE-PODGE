@@ -1,5 +1,7 @@
-import { Tiptap } from "Tiptap";
+import { Tiptap } from "components/TipTap/Tiptap";
 import { productInputFields } from "utils/constants";
+import { camelize } from "utils/functions/camelize";
+import sanitizeHtml from "sanitize-html";
 
 const ProductsInputFields = ({ product, setProduct, mode }) => {
   return (
@@ -16,14 +18,14 @@ const ProductsInputFields = ({ product, setProduct, mode }) => {
       <div className="flex gap-5">
         {productInputFields?.map((field) => (
           <input
-            key={field.ariaLabel}
+            key={field.caption}
             className="p-3 border-2 rounded-md outline-none w-[50%]"
-            aria-label={field.ariaLabel}
+            aria-label={field.caption}
             min={field.min}
             type="number"
-            name={field.name}
-            placeholder={field.placeholder}
-            value={product[field.name]}
+            name={camelize(field.caption)}
+            placeholder={field.caption}
+            value={product[camelize(field.caption)]}
             onChange={(e) =>
               setProduct({ ...product, [e.target.name]: e.target.value })
             }
@@ -40,7 +42,7 @@ const ProductsInputFields = ({ product, setProduct, mode }) => {
             setValue={(value) =>
               setProduct((prevState) => ({
                 ...prevState,
-                description: value,
+                description: sanitizeHtml(value),
               }))
             }
           />
@@ -50,7 +52,7 @@ const ProductsInputFields = ({ product, setProduct, mode }) => {
             setValue={(value) =>
               setProduct((prevState) => ({
                 ...prevState,
-                extraDetails: value,
+                extraDetails: sanitizeHtml(value),
               }))
             }
           />

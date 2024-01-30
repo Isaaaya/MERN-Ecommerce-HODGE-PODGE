@@ -1,21 +1,13 @@
-import { useState, useEffect } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { listProductsAPI } from "api/product";
+import { useDebounce } from "hooks/debounce/useDebounce";
 
-export const useGetFilteredProducts = ({ instanceId, searchBy }) => {
-    const [page, setPage] = useState(1);
-    const [search, setSearch] = useState("");
-    const [sortingType, setSortingType] = useState("az");
-    const [filters, setFilters] = useState({
-        available: [],
-        images: [],
-        price: 0,
-    });
+export const useGetFilteredProducts = ({ instanceId, searchBy, page,
+    search,
+    filters,
+    sortingType }) => {
 
-    useEffect(() => {
-        setPage(1);
-    }, [filters]);
-
+    const debouncedSearch = useDebounce({ value: search, delay: 450 })
 
     const {
         data: productsData,
@@ -27,17 +19,17 @@ export const useGetFilteredProducts = ({ instanceId, searchBy }) => {
         queryFn: () =>
             listProductsAPI({
                 [searchBy]: instanceId,
-                search,
+                search: debouncedSearch,
                 page,
                 sort: sortingType,
                 available: filters?.available?.reduce(
                     (accumulator, availableOption) =>
-                        accumulator + `&available[]=${availableOption}`,
+                        accumulator + `available[]=${availableOption}&`,
                     ""
                 ),
                 images: filters?.images?.reduce(
                     (accumulator, imagesOption) =>
-                        accumulator + `&images[]=${imagesOption}`,
+                        accumulator + `images[]=${imagesOption}&`,
                     ""
                 ),
                 price: filters?.price,
@@ -45,5 +37,5 @@ export const useGetFilteredProducts = ({ instanceId, searchBy }) => {
         placeholderData: keepPreviousData,
     });
 
-    return { page, setPage, search, setSearch, sortingType, setSortingType, filters, setFilters, products: productsData?.products, productsMaxPrice: productsData?.maxPrice, productsMinPrice: productsData?.minPrice, totalPages: productsData?.totalPages, areProductsLoading: isLoading, isProductsPlaceholderData: isPlaceholderData, areProductsFetching: isFetching }
+    return { products: productsData?.products, productsMaxPrice: productsData?.maxPrice, productsMinPrice: productsData?.minPrice, totalPages: productsData?.totalPages, isProductsPlaceholderData: isPlaceholderData, stillRetrievingProducts: isLoading || isFetching }
 }

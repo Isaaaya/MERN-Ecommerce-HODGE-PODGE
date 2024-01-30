@@ -1,8 +1,8 @@
-import { CartList } from "components/Cart/index";
+import { CartList } from "components/Cart";
 
 const CheckOutCart = ({ cart, cartTotalPrice }) => {
   return (
-    <article className="h-[650px] py-6 flex flex-col justify-between">
+    <article className="flex flex-col justify-between py-6 h-fit">
       <div className="overflow-y-auto">
         <p className="text-3xl font-semibold">Your Items</p>
         <CartList extraStyles="space-y-5" cart={cart} />

@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
+import { uploadImageAPI } from "api/image";
 
 export const useImageUpload = ({ imageUrl, images, setValue }) => {
     const [preview, setPreview] = useState(
         imageUrl || (images && images[images?.length - 1]) || ""
     );
+
+    const clearInput = (e) => {
+        e.target.value = null;
+    };
 
     useEffect(() => {
         if (imageUrl?.length > 0) setPreview(imageUrl);
@@ -16,7 +20,7 @@ export const useImageUpload = ({ imageUrl, images, setValue }) => {
         else setPreview('');
     }, [images]);
 
-    const imageUpload = async (e) => {
+    const uploadImage = async (e) => {
         e.preventDefault();
         const file = e.target.files[0];
 
@@ -31,7 +35,7 @@ export const useImageUpload = ({ imageUrl, images, setValue }) => {
 
         const formData = new FormData();
         formData.append("file", file);
-        formData.append('quality', 'auto:best');
+        formData.append("folder", 'HODGE-PODGE');
         formData.append(
             "upload_preset",
             process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
@@ -40,17 +44,13 @@ export const useImageUpload = ({ imageUrl, images, setValue }) => {
         uploadPicture(formData);
     };
 
-    const { mutate: uploadPicture } = useMutation({
-        mutationFn: (formData) =>
-            axios.post(
-                `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
-                formData
-            ),
+    const { mutate: uploadPicture, isPending: isUploadPicturePending } = useMutation({
+        mutationFn: (formData) => uploadImageAPI({ formData }),
         onSuccess: (res) => {
             setValue(res.data.secure_url);
         },
     });
 
 
-    return { preview, imageUpload }
+    return { preview, uploadImage, isUploadPicturePending, clearInput }
 }

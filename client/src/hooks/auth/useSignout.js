@@ -8,9 +8,8 @@ export const useSignout = () => {
     const navigate = useNavigate();
     const { mutate: signout } = useMutation({
         mutationFn: signoutAPI,
-        onSuccess: async () => {
+        onSuccess: () => {
             localStorage.removeItem('user');
-            // await queryClient.invalidateQueries({ queryKey: ["user"] });
             queryClient.setQueryData(['user'], null);
             navigate('/');
         }

@@ -14,7 +14,7 @@ exports.listSubcategories = asyncHandler(async (req, res) => {
             path: 'productCollection category',
             select: 'title',
         }).lean()];
-        res.status(200).json({ subcategories });
+        res.status(200).json({ subcategories, totalPages: 1 });
     };
 
     const subcategories = await Subcategory.find(filter).skip(skip).limit(limit)

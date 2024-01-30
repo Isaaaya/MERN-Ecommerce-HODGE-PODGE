@@ -3,12 +3,12 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createInstanceAPI } from "api/instance";
 import { useGetUser } from "hooks/user/useGetUser";
 import { useContext } from "react";
-import { CartContext } from "context/LocalCartContext";
+import { LocalCartContext } from "context/LocalCartContext";
 import { toast } from "react-toastify";
 
 export const useCreateOrder = ({ order }) => {
     const { user } = useGetUser();
-    const { emptyCart } = useContext(CartContext);
+    const { emptyCart } = useContext(LocalCartContext);
     const nagivate = useNavigate();
     const queryClient = useQueryClient();
 

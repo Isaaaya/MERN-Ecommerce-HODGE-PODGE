@@ -1,5 +1,4 @@
-import React from "react";
-import { Spinner } from "components/Icons";
+import { Spinner } from "assets/icons";
 
 const Button = ({
   theme,
@@ -8,6 +7,7 @@ const Button = ({
   onClick,
   disabled,
   spinner,
+  ariaLabel,
 }) => {
   const bg =
     theme === "danger"
@@ -20,7 +20,7 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      aria-label={caption}
+      aria-label={ariaLabel || caption}
       onClick={onClick}
       className={
         extraStyles +
@@ -28,7 +28,7 @@ const Button = ({
       }
       type="button"
     >
-      {spinner ? <Spinner /> : caption}
+      {spinner ? <Spinner width="25" height="25" /> : caption}
     </button>
   );
 };

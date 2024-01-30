@@ -1,5 +1,3 @@
-import React from "react";
-
 const InstancePicker = ({ data, setData, value, selectInstances }) => {
   return (
     <select
@@ -8,11 +6,12 @@ const InstancePicker = ({ data, setData, value, selectInstances }) => {
       className="p-2 text-lg border rounded-md w-[100%] text-gray-500"
     >
       <option>Select</option>
-      {selectInstances?.map((instance) => (
-        <option key={instance?._id} value={instance?._id}>
-          {instance?.title}
-        </option>
-      ))}
+      {selectInstances &&
+        selectInstances?.map((instance) => (
+          <option key={instance?._id} value={instance?._id}>
+            {instance?.title}
+          </option>
+        ))}
     </select>
   );
 };

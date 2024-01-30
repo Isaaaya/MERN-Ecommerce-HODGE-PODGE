@@ -1,10 +1,13 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Logo = ({ theme }) => {
   const textColor = theme === "dark" ? "text-white" : "text-[#1f2242]";
   return (
-    <Link aria-label="Logo / Go to Main Page on Click" to="/" className="mr-5">
+    <Link
+      aria-label="Logo / Go to Main Page on Click"
+      to="/"
+      className="md:ml-52"
+    >
       <p
         aria-label="Logo / Go to Main Page on Click"
         className={

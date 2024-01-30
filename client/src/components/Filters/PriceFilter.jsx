@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ArrowRightIcon, ArrowLeftIcon } from "components/Icons";
+import { ArrowRightIcon, ArrowLeftIcon } from "assets/icons";
 
 const PriceFilter = ({
   maxMinPrice,
@@ -16,7 +16,7 @@ const PriceFilter = ({
         onClick={() => setIsFilterExpanded((prevState) => !prevState)}
         className="flex items-center justify-between w-[90%]"
       >
-        Price <ArrowRightIcon />
+        Price <ArrowRightIcon width="25" height="25" />
       </button>
       <aside
         onClick={(e) => e.stopPropagation()}
@@ -28,15 +28,15 @@ const PriceFilter = ({
           onClick={() => setIsFilterExpanded((prevState) => !prevState)}
           className="flex items-center justify-between w-[90%]"
         >
-          Price <ArrowLeftIcon />
+          Price <ArrowLeftIcon width="25" height="25" />
         </button>
         <input
           aria-label="Price Range"
           name="price"
           type="range"
-          min={maxMinPrice?.min}
-          max={maxMinPrice?.max}
-          value={price}
+          min={maxMinPrice?.min || 0}
+          max={maxMinPrice?.max || 0}
+          value={price || 0}
           onChange={(e) => setPrice(e.target.value)}
         />
         <p>{price}</p>

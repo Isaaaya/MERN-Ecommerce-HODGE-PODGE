@@ -1,41 +1,39 @@
+import { Spinner } from "assets/icons";
+import { Button } from "components/common";
 import { useAddToCart } from "hooks/cart/useAddToCart";
 import { useRemoveOneFromCart } from "hooks/cart/useRemoveOneFromCart";
-import { Button } from "components/common";
-
-import { Spinner } from "components/Icons/index";
 
 const CartItemQuantityManager = ({
-  productId,
-  productPrice,
-  productQuantity,
+  product,
+  productAvailableQuantity,
   productQuantityInCart,
 }) => {
-  const { addToCart, isAddToCartPending } = useAddToCart(
-    productId,
-    productPrice
-  );
+  const { addToCart, isAddToCartPending } = useAddToCart(product);
   const { removeOneFromCart, isRemoveOneFromCartPending } =
-    useRemoveOneFromCart(productId, productPrice);
+    useRemoveOneFromCart(product);
+
+  const isMaxQuantityReached =
+    productQuantityInCart === productAvailableQuantity;
 
   return (
-    <div className="flex items-center justify-between w-24 h-12 px-4 text-xl border rounded-md">
+    <div className="flex items-center justify-between h-12 gap-3 px-4 text-xl border rounded-md w-fit">
       <Button
+        extraStyles={"hover:bg-gray-200 w-6"}
         onClick={removeOneFromCart}
         disabled={isRemoveOneFromCartPending}
         caption="-"
       />
-      <p>
+      <p className="w-5 text-center">
         {isAddToCartPending || isRemoveOneFromCartPending ? (
-          <Spinner />
+          <Spinner width="20" height="20" />
         ) : (
           productQuantityInCart
         )}
       </p>
       <Button
+        extraStyles={"hover:bg-gray-200 w-6"}
         onClick={addToCart}
-        disabled={
-          isAddToCartPending || productQuantityInCart === productQuantity
-        }
+        disabled={isAddToCartPending || isMaxQuantityReached}
         caption="+"
       />
     </div>

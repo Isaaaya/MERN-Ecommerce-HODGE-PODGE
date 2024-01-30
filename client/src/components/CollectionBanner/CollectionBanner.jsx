@@ -1,5 +1,5 @@
-import React from "react";
 import Placeholder from "assets/images/placeholder.webp";
+import { optimizeImage } from "utils/functions/optimizeImage";
 
 const CollectionBanner = ({ banner }) => {
   return (
@@ -7,7 +7,7 @@ const CollectionBanner = ({ banner }) => {
       <div className="md:w-[50%] h-[45%] md:h-[100%] aspect-square">
         <img
           className="w-[100%] h-[100%] object-cover"
-          src={banner?.imageUrl || Placeholder}
+          src={optimizeImage(banner?.imageUrl, 700, 500) || Placeholder}
           alt={banner?.caption}
         />
       </div>

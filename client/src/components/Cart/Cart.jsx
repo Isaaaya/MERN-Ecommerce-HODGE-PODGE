@@ -1,19 +1,15 @@
-import { useEffect } from "react";
+import { usePreventScroll } from "hooks/preventScroll/usePreventScroll";
 
-import { XMarkIcon } from "components/Icons/index";
-import { CheckOutButton } from "components/CheckOut/index";
-import { CartList } from "components/Cart/index";
+import { XMarkIcon } from "assets/icons";
+import { CheckOutButton } from "components/CheckOut";
+import { CartList, CloseCartButton } from "components/Cart";
 
-const Cart = ({ cart, cartTotalPrice, isCartOpen, setIsCartOpen }) => {
-  useEffect(() => {
-    if (document) {
-      document.body.style.overflow = isCartOpen ? "hidden" : "auto";
-    }
-  }, [isCartOpen]);
+const Cart = ({ cart, cartTotalPrice, isCartOpen, closeCart }) => {
+  usePreventScroll({ condition: isCartOpen });
 
   return (
     <div
-      onClick={() => setIsCartOpen(false)}
+      onClick={closeCart}
       className={
         isCartOpen
           ? `fixed h-screen top-0 left-0 bg-black/[0.5] w-screen z-50 overflow-hidden`
@@ -26,23 +22,25 @@ const Cart = ({ cart, cartTotalPrice, isCartOpen, setIsCartOpen }) => {
           isCartOpen ? "translate-x-0" : "translate-x-full"
         } ease-in-out duration-300`}
       >
-        <div className="flex items-center justify-between border-b-2 ">
-          <p className="text-2xl">Your Cart</p>
-          <button aria-label="Close Cart" onClick={() => setIsCartOpen(false)}>
-            <XMarkIcon />
-          </button>
+        <div className="flex items-center justify-between px-3 pt-6 border-b-2 ">
+          <p className="py-2 text-2xl">Your Cart</p>
+          <CloseCartButton
+            ariaLabel="Close Cart"
+            caption={<XMarkIcon width="30" height="30" />}
+            onClick={closeCart}
+          />
         </div>
-        <div className="flex flex-col h-full gap-5 pb-12 text-start">
+        <div className="flex flex-col h-full gap-5 pb-20 text-start">
           {cart?.products?.length > 0 && (
             <>
               <CartList
-                extraStyles="flex flex-col gap-3 overflow-y-auto"
+                extraStyles="flex flex-col gap-24 overflow-y-auto"
                 cart={cart}
-                setIsCartOpen={setIsCartOpen}
+                closeCart={closeCart}
               />
               <div className="flex flex-col gap-5">
                 <p className="text-2xl">Total Price: ${cartTotalPrice}</p>
-                <CheckOutButton setIsCartOpen={setIsCartOpen} />
+                <CheckOutButton closeCart={closeCart} />
               </div>
             </>
           )}

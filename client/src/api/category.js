@@ -1,4 +1,4 @@
-import { API } from "./index";
+import { API } from "api/index";
 
 export const getCategorySubcategoriesAPI = async ({ categoryId }) => {
     const { data } = await API.get(`categories/${categoryId}/subcategories`);

@@ -1,9 +1,8 @@
-import React from "react";
 import {
   TitleCell,
   CollectionCell,
   CategoryCell,
-} from "components/InstancesTable/index";
+} from "components/InstancesTable";
 
 const InstanceDataCell = ({
   isUpdatingMode,

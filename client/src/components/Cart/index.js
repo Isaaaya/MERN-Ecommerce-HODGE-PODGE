@@ -4,6 +4,6 @@ import CartButton from "./CartButton";
 import CartItem from "./CartItem";
 import CartItemQuantityManager from "./CartItemQuantityManager";
 import CartList from "./CartList";
-import CartModal from "./CartModal";
+import CloseCartButton from "./CloseCartButton";
 
-export { AddToCartButton, Cart, CartButton, CartItem, CartItemQuantityManager, CartList, CartModal }
+export { AddToCartButton, Cart, CartButton, CartItem, CartItemQuantityManager, CartList, CloseCartButton }

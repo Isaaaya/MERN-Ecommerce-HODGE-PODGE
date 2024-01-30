@@ -1,6 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import { PencilIcon } from "components/Icons/index";
+import { PencilIcon } from "assets/icons";
 
 const StartUpdatingModeButton = ({
   instanceId,
@@ -8,14 +7,13 @@ const StartUpdatingModeButton = ({
   setIsUpdatingMode,
 }) => {
   const navigate = useNavigate();
+  const startUpdatingMode = () => {
+    if (advancedUpdate) navigate(`/admin/${instanceId}/update`);
+    else setIsUpdatingMode(true);
+  };
   return (
-    <button
-      onClick={() => {
-        if (advancedUpdate) navigate(`/admin/${instanceId}/update`);
-        else setIsUpdatingMode(true);
-      }}
-    >
-      <PencilIcon />
+    <button onClick={startUpdatingMode}>
+      <PencilIcon width="25" height="25" />
     </button>
   );
 };

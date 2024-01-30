@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+import { useContext } from "react";
 import { useGetUser } from "hooks/user/useGetUser";
+import { LocalCartContext } from 'context/LocalCartContext'
 import { getCartAPI } from "api/cart";
-import { useGetLocalCart } from "./useGetLocalCart";
 
 export const useGetUserCart = () => {
     const { user } = useGetUser();
@@ -12,8 +13,8 @@ export const useGetUserCart = () => {
         enabled: !!user,
     });
 
-    const { fullLocalCart } = useGetLocalCart();
-    const userCart = user?.email ? cart : fullLocalCart;
+    const { localCart } = useContext(LocalCartContext);
+    const userCart = user?.email ? cart : localCart;
 
     const cartWithAllAvailableProducts = { products: userCart?.products?.filter((item) => item?.product && item?.product?.quantity > 0) };
 
@@ -22,6 +23,7 @@ export const useGetUserCart = () => {
 
     if (cartWithAllAvailableProducts?.products?.length > 0) {
         cartTotalItems = cartWithAllAvailableProducts?.products?.reduce((acc, item) => acc + item?.quantity, 0);
+
         cartTotalPrice = cartWithAllAvailableProducts?.products?.reduce((acc, item) => acc + (item?.product?.price * item?.quantity), 0);
     }
 

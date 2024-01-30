@@ -9,11 +9,26 @@ export const useSelectGroupInstance = ({ instances, setProduct, productField, se
     }, [instances]);
 
     const handleGroupInstanceChange = (e) => {
-        setProduct((prevState) => ({
+        if (productField === 'productCollection') {
+            setProduct((prevState) => ({
+                ...prevState,
+                [productField]: e.target.value,
+                category: '',
+                subcategory: '',
+            }));
+        }
+        if (productField === 'category') {
+            setProduct((prevState) => ({
+                ...prevState,
+                [productField]: e.target.value,
+                subcategory: '',
+            }));
+        }
+        else setProduct((prevState) => ({
             ...prevState,
             [productField]: e.target.value,
         }));
-        setSelectedGroupId && setSelectedGroupId(e.target.value);
+        setSelectedGroupId(e.target.value);
     };
 
     return { groupInstances, setGroupInstances, handleGroupInstanceChange }

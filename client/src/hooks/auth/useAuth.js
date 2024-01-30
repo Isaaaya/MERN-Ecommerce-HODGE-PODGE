@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useGetAuthMode } from "hooks/auth/useGetAuthMode";
+
 import { handleAuthAPI } from "api/auth";
 import { setUserData } from "utils/functions/setUserData";
 import { toast } from 'react-toastify';
 
-export const useAuth = ({ mode }) => {
+export const useAuth = () => {
+    const { mode } = useGetAuthMode();
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
@@ -26,10 +29,9 @@ export const useAuth = ({ mode }) => {
         },
         onError: (error) => {
             if (error.response.data.message) toast.error(error.response.data.message)
-            console.log(error.response.data.errors)
             if (error.response.data.errors) error.response.data.errors.map((err) => toast.error(err.msg))
         }
     });
 
-    return { user, setUser, auth, isAuthPending }
+    return { user, setUser, auth, isAuthPending, mode }
 }

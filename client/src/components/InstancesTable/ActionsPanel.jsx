@@ -3,8 +3,8 @@ import { useActionsPanel } from "hooks/actionsPanel/useActionsPanel";
 import {
   CancelUpdatingInstanceButton,
   UpdateInstanceButton,
-} from "components/Instance/index";
-import { OrderDetails } from "components/Order/index";
+} from "components/Instance";
+import { OrderDetailsModal } from "components/Order";
 
 const ActionsPanel = ({
   isUpdatingMode,
@@ -39,7 +39,7 @@ const ActionsPanel = ({
           <CancelUpdatingInstanceButton setIsUpdatingMode={setIsUpdatingMode} />
         </div>
       )}
-      <OrderDetails showOrderDetails={showOrderDetails} instance={instance} />
+      <OrderDetailsModal showOrderDetails={showOrderDetails} order={instance} />
     </div>
   );
 };

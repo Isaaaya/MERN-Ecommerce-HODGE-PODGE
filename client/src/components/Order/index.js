@@ -1,5 +1,5 @@
 import OrderArticle from "./OrderArticle";
-import OrderDetails from "./OrderDetails";
+import OrderDetailsModal from "./OrderDetailsModal";
 import ViewOrderInfoButton from "./ViewOrderInfoButton";
 
-export { OrderArticle, OrderDetails, ViewOrderInfoButton }
+export { OrderArticle, OrderDetailsModal, ViewOrderInfoButton }

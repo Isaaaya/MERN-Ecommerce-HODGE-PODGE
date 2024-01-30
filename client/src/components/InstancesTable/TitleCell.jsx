@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const TitleCell = ({ content, setUpdatedInstance }) => {
   const [updatedCell, setUpdatedCell] = useState(content);

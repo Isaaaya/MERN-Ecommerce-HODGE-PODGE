@@ -18,7 +18,7 @@ exports.listOrders = asyncHandler(async (req, res) => {
 
     if (mongoose.isValidObjectId(query)) {
         const orders = [await Order.findById(query)];
-        res.status(200).json({ orders });
+        res.status(200).json({ orders, totalPages: 1 });
     };
 
     const orders = await Order.find(filter).skip(skip).limit(limit);
@@ -32,10 +32,6 @@ exports.listOrders = asyncHandler(async (req, res) => {
 
 exports.createOrder = asyncHandler(async (req, res) => {
     const { userEmail, products, shippingDetails } = req.body;
-    if (!products?.length) {
-        res.status(422);
-        throw new Error('Products list cannot be empty')
-    };
     let totalItems = 0;
     let totalPrice = 0;
     let productsFullInfo = [];

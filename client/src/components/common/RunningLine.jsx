@@ -1,5 +1,3 @@
-import React from "react";
-
 const RunningLine = ({ isAnimated }) => {
   return (
     <div className="inline-flex w-full overflow-hidden text-white/[0.8] bg-black h-7">

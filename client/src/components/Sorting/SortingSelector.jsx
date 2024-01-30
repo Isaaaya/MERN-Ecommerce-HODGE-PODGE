@@ -1,5 +1,3 @@
-import React from "react";
-
 import { sortingOptions } from "utils/constants";
 
 const SortingSelector = ({ setSortingType }) => {

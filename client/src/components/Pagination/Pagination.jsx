@@ -1,6 +1,6 @@
 import { usePagination } from "hooks/pagination/usePagination";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "../Icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "assets/icons";
 
 const Pagination = ({ page, setPage, isPlaceholderData, totalPages }) => {
   const {
@@ -23,7 +23,7 @@ const Pagination = ({ page, setPage, isPlaceholderData, totalPages }) => {
           onClick={prevPage}
           disabled={isPlaceholderData || page === 1}
         >
-          <ChevronLeftIcon />
+          <ChevronLeftIcon width="25" height="25" />
         </button>
         {pageDecrementDots}
         {renderPageNumbers}
@@ -36,7 +36,7 @@ const Pagination = ({ page, setPage, isPlaceholderData, totalPages }) => {
           onClick={nextPage}
           disabled={isPlaceholderData || page === totalPages}
         >
-          <ChevronRightIcon />
+          <ChevronRightIcon width="25" height="25" />
         </button>
       </nav>
     );

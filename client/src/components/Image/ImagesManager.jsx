@@ -1,6 +1,8 @@
-import { ImageUpload } from "components/Image/index";
-import { StarIcon, StarSolidIcon } from "components/Icons/index";
+import { ImageUpload } from "components/Image";
 import { useImagesManager } from "hooks/imagesManager/useImagesManager";
+import { optimizeImage } from "utils/functions/optimizeImage";
+import Placeholder from "assets/images/placeholder.webp";
+import { SetMainImageButton, RemoveImageButton } from "components/Image";
 
 const ImagesManager = ({ images, setValue }) => {
   const { removeImage, setMainImage, setImages } = useImagesManager({
@@ -11,31 +13,26 @@ const ImagesManager = ({ images, setValue }) => {
   return (
     <div className="grid grid-cols-1 gap-5 px-5 md:grid-cols-2 md:mx-auto">
       <ImageUpload images={images} setValue={setImages} />
-      <div className="grid max-md:grid-flow-col md:grid-cols-3 gap-3 overflow-x-auto h-fit max-h-20 md:max-h-[360px]  md:w-fit">
+      <div className="grid max-md:grid-flow-col md:grid-cols-3 gap-3 overflow-x-auto h-24 md:max-h-[360px] w-fit max-w-full">
         {images?.map((image, index) => (
           <div
             key={index}
-            className="relative w-20 h-20 overflow-hidden rounded-lg aspect-square"
+            className="relative w-20 h-20 overflow-hidden rounded-lg shadow-sm aspect-square"
           >
             <img
-              src={image}
+              src={optimizeImage(image, 120, 120)}
+              style={{
+                background: `url(${Placeholder})`,
+              }}
               alt="Product"
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full border-2 rounded-lg"
             />
-            <button
-              type="button"
-              onClick={() => removeImage(image)}
-              className="absolute top-2 right-2 hover:bg-white/[0.4] px-2 rounded-full"
-            >
-              x
-            </button>
-            <button
-              type="button"
-              onClick={() => setMainImage(image)}
-              className="absolute bottom-2 left-2 hover:bg-white/[0.4] p-1 rounded-full"
-            >
-              {images.indexOf(image) !== 0 ? <StarIcon /> : <StarSolidIcon />}
-            </button>
+            <RemoveImageButton image={image} removeImage={removeImage} />
+            <SetMainImageButton
+              isMainImage={images.indexOf(image) === 0}
+              image={image}
+              setMainImage={setMainImage}
+            />
           </div>
         ))}
       </div>

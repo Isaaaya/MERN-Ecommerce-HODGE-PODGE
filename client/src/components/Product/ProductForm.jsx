@@ -1,31 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { useHandleProduct } from "hooks/product/useHandleProduct";
-import { useCreateInstance } from "hooks/instance/useCreateInstance";
-import { useUpdateInstance } from "hooks/instance/useUpdateInstance";
+import { ImagesManager } from "components/Image";
+import { HandleInstanceButton } from "components/Instance";
+import { GroupPickerManager, ProductInputFields } from "components/Product";
+import { useProductForm } from "hooks/product/useProductForm";
 
-import {
-  ProductInputFields,
-  GroupPickerManager,
-} from "components/Product/index";
-import { ImagesManager } from "components/Image/index";
-import { CreateInstanceButton } from "components/Instance/index";
-
-const ProductForm = ({ mode, productId }) => {
-  const { product, setProduct } = useHandleProduct({
-    productId,
-    mode,
-  });
-  const navigate = useNavigate();
-
-  const { createInstance, isCreateInstancePending } = useCreateInstance({
-    instanceType: "products",
-    data: product,
-  });
-  const { updateInstance, isUpdateInstancePending } = useUpdateInstance({
-    instanceType: "products",
-    data: product,
-    instanceId: productId,
-  });
+const ProductForm = ({ mode }) => {
+  const { handleProduct, isProductPending, productId, product, setProduct } =
+    useProductForm({ mode });
 
   return (
     <form className="border-2 rounded-lg w-[85%] mx-auto flex flex-col py-10 bg-white">
@@ -36,13 +16,10 @@ const ProductForm = ({ mode, productId }) => {
         setProduct={setProduct}
       />
       <GroupPickerManager product={product} setProduct={setProduct} />
-      <CreateInstanceButton
-        disabled={isCreateInstancePending || isUpdateInstancePending}
-        spinner={isCreateInstancePending || isUpdateInstancePending}
-        handleClick={() => {
-          mode === "update" ? updateInstance() : createInstance();
-          navigate("/admin/products");
-        }}
+      <HandleInstanceButton
+        disabled={isProductPending}
+        spinner={isProductPending}
+        onClick={handleProduct}
         caption={mode === "update" ? "Update" : "Add"}
         extraStyles="w-[200px] h-10 mx-auto mt-8"
         instanceType="products"

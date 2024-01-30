@@ -10,4 +10,4 @@ export const useGetUser = () => {
     });
 
     return { user, isUserLoading };
-}
+};

@@ -1,5 +1,4 @@
-import React from "react";
-import { TwitterPicker, HuePicker } from "react-color";
+import { HuePicker, TwitterPicker } from "react-color";
 import { twitterPickerColors } from "utils/constants";
 
 const ColorPickers = ({ color, setColor }) => {

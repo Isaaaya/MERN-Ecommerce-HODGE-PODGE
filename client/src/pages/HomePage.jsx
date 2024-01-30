@@ -1,14 +1,12 @@
 import { useGetProducts } from "hooks/product/useGetProducts";
 
-import { ProductsFeed } from "components/Product/index";
-import {
-  Banner,
-  FeauturedInfo,
-  WhyUs,
-} from "components/HomePageSections/index";
-import { Container } from "components/Wrappers";
+import { ProductsFeed } from "components/Product";
+import { Banner, FeauturedInfo, WhyUs } from "components/common";
+import { Container } from "layout";
+import { useScrollToTop } from "hooks/scrollToTop/useScrollToTop";
 
 const HomePage = () => {
+  useScrollToTop();
   const { products, hasProductsErrorOccurred, areProductsLoading } =
     useGetProducts({ configData: { limit: 12 } });
 

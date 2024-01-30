@@ -1,21 +1,23 @@
 import { useFilterModal } from "hooks/filterModal/useFilterModal";
 
 const FilterModal = ({
-  isModalOpen,
-  setIsModalOpen,
+  isMainModalOpen,
+  closeMainModal,
   filters,
   setFilters,
   maxMinPrice,
 }) => {
   const { filterModals, closeAllFilterModals } = useFilterModal();
+  const handleCloseAllModals = () => {
+    closeAllFilterModals();
+    closeMainModal();
+  };
+
   return (
     <div
-      onClick={() => {
-        closeAllFilterModals();
-        setIsModalOpen(false);
-      }}
+      onClick={handleCloseAllModals}
       className={
-        isModalOpen
+        isMainModalOpen
           ? `fixed h-screen top-0 bg-black/[0.5] w-full z-50 overflow-hidden`
           : ""
       }
@@ -23,7 +25,7 @@ const FilterModal = ({
       <aside
         onClick={(e) => e.stopPropagation()}
         className={`fixed top-0 left-0 h-screen bg-white border-2 transition-all duration-300 ease-in-out w-[40%] flex flex-col gap-5 z-50 p-5 ${
-          !isModalOpen && "-translate-x-full"
+          !isMainModalOpen && "-translate-x-full"
         }`}
       >
         {filterModals?.map((modal, index) => (
@@ -33,7 +35,6 @@ const FilterModal = ({
             setIsFilterExpanded={modal?.setIsFilterExpanded}
             filters={filters}
             setFilters={setFilters}
-            setIsModalOpen={setIsModalOpen}
             maxMinPrice={maxMinPrice}
           />
         ))}

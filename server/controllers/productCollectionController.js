@@ -18,7 +18,7 @@ exports.listProductCollections = asyncHandler(async (req, res) => {
                 select: 'title'
             }
         }).lean()];
-        res.status(200).json({ productCollections });
+        res.status(200).json({ productCollections, totalPages: 1 });
     };
 
     const productCollections = await ProductCollection.find(filter).skip(skip).limit(limit).populate({
@@ -30,10 +30,10 @@ exports.listProductCollections = asyncHandler(async (req, res) => {
         }
     }).lean();
 
-    const totalCollections = await ProductCollection.countDocuments(filter);
-    const totalPages = Math.ceil(totalCollections / limit);
+    const totalProductCollections = await ProductCollection.countDocuments(filter);
+    const totalPages = Math.ceil(totalProductCollections / limit);
 
-    res.status(200).json({ productCollections, totalCollections, page, totalPages });
+    res.status(200).json({ productCollections, totalProductCollections, page, totalPages });
 });
 
 
@@ -69,14 +69,14 @@ exports.listCollectionCategories = asyncHandler(async (req, res) => {
     res.status(200).json(categories);
 });
 
-exports.getCollectionById = asyncHandler(async (req, res) => {
+exports.getProductCollectionById = asyncHandler(async (req, res) => {
     const { productCollectionId } = req.params;
     const productCollection = await ProductCollection.findById(productCollectionId).select('title banner')
     res.status(200).json(productCollection)
 })
 
 
-exports.createCollectionBanner = asyncHandler(async (req, res) => {
+exports.handleCollectionBanner = asyncHandler(async (req, res) => {
     const { productCollectionId } = req.params;
     const { imageUrl, caption, captionColor, content } = req.body;
     const updatedCollection = await ProductCollection.findByIdAndUpdate(productCollectionId, {

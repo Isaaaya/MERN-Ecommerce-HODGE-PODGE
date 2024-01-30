@@ -1,14 +1,14 @@
+import { useParams } from "react-router-dom";
 import { useUpdateInstance } from "hooks/instance/useUpdateInstance";
-import { useGetAdminInstanceType } from "hooks/instance/useGetAdminInstanceType";
 import { Button } from "components/common";
-import { DoneIcon } from "components/Icons";
+import { DoneIcon } from "assets/icons";
 
 const UpdateInstanceButton = ({
   updatedInstance,
   instanceId,
   setIsUpdatingMode,
 }) => {
-  const { instanceType } = useGetAdminInstanceType();
+  const { instanceType } = useParams();
   const { updateInstance, isUpdateingPending } = useUpdateInstance({
     instanceType,
     instanceId,
@@ -21,7 +21,7 @@ const UpdateInstanceButton = ({
   };
   return (
     <Button
-      caption={<DoneIcon />}
+      caption={<DoneIcon width="25" height="25" />}
       disabled={isUpdateingPending}
       onClick={handleUpdate}
     />

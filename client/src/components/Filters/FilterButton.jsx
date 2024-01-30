@@ -1,29 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { usePreventScroll } from "hooks/preventScroll/usePreventScroll";
 
-import { AdjustmentsHorizontal } from "components/Icons/index";
-import { FilterModal } from "components/Filters/index";
+import { AdjustmentsHorizontalIcon } from "assets/icons";
+import { FilterModal } from "components/Filters";
 
 const FilterButton = ({ filters, setFilters, maxMinPrice }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  useEffect(() => {
-    if (document) {
-      document.body.style.overflow = isModalOpen ? "hidden" : "auto";
-    }
-  }, [isModalOpen]);
+  const [isMainModalOpen, setIsMainModalOpen] = useState(false);
+  usePreventScroll({ condition: isMainModalOpen });
+
+  const openMainModal = () => {
+    setIsMainModalOpen(true);
+  };
+
+  const closeMainModal = () => {
+    setIsMainModalOpen(false);
+  };
+
   return (
     <>
       <FilterModal
         maxMinPrice={maxMinPrice}
         filters={filters}
         setFilters={setFilters}
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
+        isMainModalOpen={isMainModalOpen}
+        closeMainModal={closeMainModal}
       />
       <button
-        onClick={() => setIsModalOpen(true)}
+        onClick={openMainModal}
         className="flex items-center gap-2 text-lg hover:underline underline-offset-4 decoration-2"
       >
-        <AdjustmentsHorizontal /> Filter
+        <AdjustmentsHorizontalIcon width="25" height="25" /> Filter
       </button>
     </>
   );

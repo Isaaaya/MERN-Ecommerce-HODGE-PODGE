@@ -1,23 +1,22 @@
 import { useContext } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { removeOneFromCartAPI } from "api/cart";
-import { CartContext } from "context/LocalCartContext";
+import { LocalCartContext } from "context/LocalCartContext";
 import { getUserData } from "utils/functions/getUserData";
 
-export const useRemoveOneFromCart = (productId, productPrice) => {
+export const useRemoveOneFromCart = (product) => {
     const user = getUserData();
     const queryClient = useQueryClient();
     const { mutate: remove, isPending: isRemoveOneFromCartPending } = useMutation({
-        mutationFn: () => removeOneFromCartAPI({ productId }),
+        mutationFn: () => removeOneFromCartAPI({ productId: product?._id }),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["cart"] });
         },
     });
 
+    const { removeOneFromLocalCart } = useContext(LocalCartContext);
 
-    const { removeOneFromLocalCart } = useContext(CartContext);
-
-    const removeOneFromLocalCartWithArgs = removeOneFromLocalCart.bind(null, productId, productPrice);
+    const removeOneFromLocalCartWithArgs = removeOneFromLocalCart.bind(null, product);
 
     const removeOneFromCart = user?.email ? remove : removeOneFromLocalCartWithArgs;
 

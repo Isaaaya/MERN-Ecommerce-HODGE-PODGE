@@ -1,10 +1,13 @@
 import { handleChange } from "utils/functions/handleChange";
 import { userInputFields } from "utils/constants";
 import { useUpdateUser } from "hooks/user/useUpdateUser";
+import { camelize } from "utils/functions/camelize";
+import { handleKeyDown } from "utils/functions/handleKeyDown";
 
-import { Spinner } from "components/Icons";
-import { SignoutButton, UpdateUserButton } from "components/common/index";
-import { Container } from "components/Wrappers";
+import { Spinner } from "assets/icons";
+import { UpdateUserButton } from "components/User";
+import { SignoutButton } from "components/Auth";
+import { Container } from "layout";
 
 const UserProfilePage = () => {
   const { updatedUser, updateUser, setUpdatedUser, isUpdateUserPending } =
@@ -12,23 +15,25 @@ const UserProfilePage = () => {
 
   const updateInputFields = updatedUser ? (
     userInputFields.map((input) => {
-      if (input.name === "password") return null;
+      if (input.caption === "Password") return null;
       return (
         <input
-          onKeyDown={(e) => e.key === "Enter" && updateUser()}
-          aria-label={input.name}
+          onKeyDown={(e) =>
+            handleKeyDown(e, { selectedKey: "Enter", callback: updateUser })
+          }
+          aria-label={input.caption}
           className="p-3 border-b-[2px] border-[#ff8156] focus:outline-none"
-          value={updatedUser[input.name] || ""}
+          value={updatedUser[camelize(input.caption)] || ""}
           type={input.type}
-          key={input.name}
-          name={input.name}
-          placeholder={input.placeholder}
+          key={input.caption}
+          name={camelize(input.caption)}
+          placeholder={input.caption}
           onChange={(e) => handleChange(e, setUpdatedUser)}
         />
       );
     })
   ) : (
-    <Spinner />
+    <Spinner width="25" height="25" />
   );
 
   return (

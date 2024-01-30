@@ -1,54 +1,53 @@
 import { createContext, useState } from "react";
 
-export const CartContext = createContext();
+export const LocalCartContext = createContext();
 
 export function CartProvider({ children }) {
     const [localCart, setLocalCart] = useState(JSON.parse(localStorage.getItem('localCart')));
 
     const findInCart = (productId) => {
         for (const item of localCart?.products) {
-            if (item.productId === productId) {
-                return localCart?.products.indexOf(item);
+            if (item.product._id === productId) {
+                return localCart?.products?.indexOf(item);
             }
         };
         return -1;
     };
 
-    const addToLocalCart = (productId) => {
+    const addToLocalCart = (product) => {
+        const { _id, title, price, images, quantity } = product;
         if (localCart?.products?.length > 0) {
             let newProducts = localCart?.products;
 
-            if (findInCart(productId) >= 0) {
-                const itemIndex = findInCart(productId);
+            if (findInCart(_id) >= 0) {
+                const itemIndex = findInCart(_id);
                 newProducts[itemIndex].quantity++
             } else {
-                newProducts.push({ productId, quantity: 1 })
+                newProducts.push({ product: { _id, title, price, images, quantity }, quantity: 1 })
             };
 
-            setLocalCart((prevState) => ({ ...prevState, products: newProducts }))
-
-            localStorage.setItem('localCart', JSON.stringify({ products: localCart?.products }));
+            setLocalCart({ products: newProducts });
+            localStorage.setItem('localCart', JSON.stringify({ products: newProducts }));
 
         } else {
-            setLocalCart({ products: [{ productId, quantity: 1 }] });
-            localStorage.setItem('localCart', JSON.stringify({ products: [{ productId, quantity: 1 }] }));
+            setLocalCart({ products: [{ product: { _id, title, price, images, quantity }, quantity: 1 }] });
+            localStorage.setItem('localCart', JSON.stringify({ products: [{ product: { _id, title, price, images, quantity }, quantity: 1 }] }));
         }
 
     };
 
 
-    const removeOneFromLocalCart = (productId) => {
-
+    const removeOneFromLocalCart = (product) => {
         let newProducts = localCart?.products;
+        const { _id } = product;
 
-        if (findInCart(productId) >= 0) {
-            if (newProducts[findInCart(productId)].quantity > 1) {
-                newProducts[findInCart(productId)].quantity--;
+        if (findInCart(_id) >= 0) {
+            if (newProducts[findInCart(_id)].quantity > 1) {
+                newProducts[findInCart(_id)].quantity--;
             } else {
-                newProducts = newProducts.filter((product) => product?.productId !== productId)
+                newProducts = newProducts.filter((item) => item?.product._id !== _id)
             };
             setLocalCart({ products: newProducts });
-            console.log({ products: newProducts })
 
             localStorage.setItem('localCart', JSON.stringify({ products: newProducts }))
         };
@@ -56,18 +55,16 @@ export function CartProvider({ children }) {
         return;
     };
 
-    const removeManyFromLocalCart = (productId) => {
-        console.log('here')
+    const removeManyFromLocalCart = (product) => {
         let newProducts = localCart?.products;
+        const { _id } = product;
 
-        if (findInCart(productId) >= 0) {
-            newProducts = newProducts.filter((product) => product?.productId !== productId)
+        if (findInCart(_id) >= 0) {
+            newProducts = newProducts.filter((item) => item?.product._id !== _id)
         };
         setLocalCart({ products: newProducts });
-        console.log({ products: newProducts })
 
         localStorage.setItem('localCart', JSON.stringify({ products: newProducts }))
-
 
         return;
     };
@@ -88,6 +85,6 @@ export function CartProvider({ children }) {
     }
 
     return (
-        <CartContext.Provider value={value}>{children}</CartContext.Provider>
+        <LocalCartContext.Provider value={value}>{children}</LocalCartContext.Provider>
     )
 };

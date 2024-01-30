@@ -1,29 +1,23 @@
-import { useNavigate } from "react-router-dom";
-import { useWishlist } from "hooks/wishlist/useWishlist";
-import { useGetUser } from "hooks/user/useGetUser";
+import { useToggleWishlistButton } from "hooks/wishlist/useToggleWishlistButton";
 
-import { HeartIcon, HeartSolidIcon } from "components/Icons/index";
+import { HeartIcon, HeartSolidIcon } from "assets/icons";
 
 const AddToWishlistButton = ({ productId }) => {
-  const navigate = useNavigate();
-  const { user } = useGetUser();
-  const { isInWishlist, addProductToWishlist, removeProductFromWishlist } =
-    useWishlist({ productId });
-
-  const handleWishlist = () => {
-    if (user?.email) {
-      if (isInWishlist) removeProductFromWishlist();
-      else addProductToWishlist();
-    } else navigate("/auth/signin");
-  };
+  const { isInWishlist, toggleWishlist } = useToggleWishlistButton({
+    productId,
+  });
 
   return (
     <button
-      onClick={handleWishlist}
+      onClick={toggleWishlist}
       className="flex items-center gap-1 text-gray-500"
     >
       <span className="text-xl">
-        {isInWishlist ? <HeartSolidIcon /> : <HeartIcon />}
+        {isInWishlist ? (
+          <HeartSolidIcon width="30" height="30" />
+        ) : (
+          <HeartIcon width="30" height="30" />
+        )}
       </span>{" "}
       Add to Wishlist
     </button>

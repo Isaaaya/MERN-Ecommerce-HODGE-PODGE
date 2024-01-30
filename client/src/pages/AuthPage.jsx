@@ -1,39 +1,40 @@
 import { userInputFields } from "utils/constants";
 import { Link } from "react-router-dom";
 import { handleChange } from "utils/functions/handleChange";
+import { handleKeyDown } from "utils/functions/handleKeyDown";
 import { useAuth } from "hooks/auth/useAuth";
-import { useGetAuthMode } from "hooks/auth/useGetAuthMode";
+import { camelize } from "utils/functions/camelize";
 
-import { Container } from "components/Wrappers";
-import { AuthButton } from "components/common";
+import { Container } from "layout";
+import { AuthButton } from "components/Auth";
+import { getAuthCaptions } from "utils/functions/getAuthCaptions";
 
 const AuthPage = () => {
-  const { mode } = useGetAuthMode();
-  const { user, setUser, auth, isAuthPending } = useAuth({ mode });
+  const { user, setUser, auth, isAuthPending, mode } = useAuth();
+  const { heading, alternativePagePath, goToAlternativePageLabel } =
+    getAuthCaptions(mode);
 
   return (
-    <section className=" mx-auto my-[60px] flex flex-col gap-10 text-center">
+    <section className="mx-auto my-[60px] flex flex-col gap-10 text-center">
       <Container extraStyles="flex flex-col items-center gap-10 text-center w-full">
         <p className="max-md:text-3xl text-5xl font-semibold text-[#1e2242]">
-          {mode === "signin" ? "Login" : "Create account"}
+          {heading}
         </p>
         <div className="flex flex-col w-[80%] max-w-[500px] mx-auto gap-6">
           {userInputFields.map((input) => {
-            if (
-              mode === "signin" &&
-              (input.name === "firstName" || input.name === "lastName")
-            )
-              return null;
+            if (mode === "signin" && !input.showAtSignin) return null;
             return (
               <input
-                onKeyDown={(e) => e.key === "Enter" && auth()}
-                aria-label={input.name}
+                onKeyDown={(e) =>
+                  handleKeyDown(e, { selectedKey: "Enter", callback: auth })
+                }
+                aria-label={input.caption}
                 className="p-3 border-b-[2px] border-[#ff8156] focus:outline-none"
-                value={user[input.name]}
+                value={user[camelize(input.caption)]}
                 type={input.type}
-                key={input.name}
-                name={input.name}
-                placeholder={input.placeholder}
+                key={input.caption}
+                name={camelize(input.caption)}
+                placeholder={input.caption}
                 onChange={(e) => handleChange(e, setUser)}
               />
             );
@@ -41,13 +42,12 @@ const AuthPage = () => {
         </div>
         <AuthButton auth={auth} isAuthPending={isAuthPending} mode={mode} />
         <Link
-          aria-label={`Go to ${mode === "signin" ? "signup" : "signin"} Page`}
-          to={`/auth/${mode === "signin" ? "signup" : "signin"}`}
+          className="capitalize"
+          aria-label={`Go to ${alternativePagePath} Page`}
+          to={`/auth/${alternativePagePath}`}
         >
           <p className="underline underline-offset-2">
-            {mode === "signin"
-              ? "Don't have an account yet?"
-              : "Already have an account?"}
+            {goToAlternativePageLabel}
           </p>
         </Link>
       </Container>

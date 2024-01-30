@@ -1,4 +1,4 @@
-import { UserIcon, HeartIcon } from 'components/Icons/index';
+import { UserIcon, HeartIcon } from 'assets/icons/index';
 import {
     HeadingOneIcon,
     BoldIcon,
@@ -8,43 +8,43 @@ import {
     BulletListIcon,
     RedoIcon,
     UndoIcon,
-} from "components/Icons/textEditorIcons";
+    ParagraphIcon,
+} from "assets/icons/textEditorIcons";
 import GiftBoxImage from 'assets/images/gift-box.webp';
 
 export const headerLinks = [
     {
         link: '/auth/signin',
-        icon: <UserIcon />,
+        icon: <UserIcon width="30" height="30" />,
 
     },
     {
         link: '/wishlist',
-        icon: <HeartIcon />,
+        icon: <HeartIcon width="30" height="30" />,
 
     }
 ];
 
-
 export const userInputFields = [
     {
         type: 'text',
-        name: 'firstName',
-        placeholder: 'First Name',
+        caption: 'First Name',
+        showAtSignin: false,
     },
     {
         type: 'text',
-        name: 'lastName',
-        placeholder: 'Last Name',
+        caption: 'Last Name',
+        showAtSignin: false,
     },
     {
         type: 'email',
-        name: 'email',
-        placeholder: 'Email',
+        caption: 'Email',
+        showAtSignin: true,
     },
     {
         type: 'password',
-        name: 'password',
-        placeholder: 'Password',
+        caption: 'Password',
+        showAtSignin: true,
     },
 ];
 
@@ -181,40 +181,40 @@ export const sortingOptions = [
 
 export const productInputFields = [
     {
-        ariaLabel: "Price",
-        placeholder: "Price",
-        name: 'price',
+        caption: 'Price',
         min: 0.1,
     },
     {
-        ariaLabel: "Quantity",
-        placeholder: "Quantity",
-        name: 'quantity',
+        caption: 'Quantity',
         min: 0,
     }
 ];
 
 
 export const tiptapButtonsData = [
-    { icon: <BoldIcon />, command: "toggleBold", title: "bold" },
-    { icon: <ItalicIcon />, command: "toggleItalic", title: "italic" },
-    { icon: <StrikethroughIcon />, command: "toggleStrike", title: "strike" },
+    { icon: <BoldIcon width="22" height="22" />, command: "toggleBold", title: "bold" },
+    { icon: <ItalicIcon width="22" height="22" />, command: "toggleItalic", title: "italic" },
+    { icon: <StrikethroughIcon width="22" height="22" />, command: "toggleStrike", title: "strike" },
+    { icon: <ParagraphIcon width="22" height="22" />, command: "setHardBreak", title: "hardBreak" },
     {
-        icon: <HeadingOneIcon />,
+        icon: <HeadingOneIcon width="22" height="22" />,
         command: "toggleHeading",
         args: { level: 1 },
         title: "heading",
     },
     {
-        icon: <BulletListIcon />,
+        icon: <BulletListIcon width="22" height="22" />,
         command: "toggleBulletList",
         title: "bulletList",
     },
     {
-        icon: <OrderedListIcon />,
+        icon: <OrderedListIcon width="22" height="22" />,
         command: "toggleOrderedList",
         title: "orderedList",
     },
-    { icon: <UndoIcon />, command: "undo", title: "undo" },
-    { icon: <RedoIcon />, command: "redo", title: "redo" },
+    { icon: <UndoIcon width="22" height="22" />, command: "undo", title: "undo" },
+    { icon: <RedoIcon width="22" height="22" />, command: "redo", title: "redo" },
 ];
+
+
+export const shippingDetailsFields = ["First Name", "Last Name", "Street Address", "Apt Number", "State", "Zip"]

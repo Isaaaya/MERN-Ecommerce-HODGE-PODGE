@@ -1,0 +1,27 @@
+import PencilSquareIcon from "./PencilSquareIcon";
+import PencilIcon from "./PencilIcon";
+import TrashIcon from "./TrashIcon";
+import StarIcon from "./StarIcon";
+import StarSolidIcon from "./StarSolidIcon";
+import HeartIcon from "./HeartIcon";
+import HeartSolidIcon from "./HeartSolidIcon";
+import ChevronUpIcon from "./ChevronUpIcon";
+import ChevronDownIcon from "./ChevronDownIcon";
+import ChevronLeftIcon from "./ChevronLeftIcon";
+import ChevronRightIcon from "./ChevronRightIcon";
+import ArrowRightIcon from "./ArrowRightIcon";
+import ArrowLeftIcon from "./ArrowLeftIcon";
+import BagIcon from "./BagIcon";
+import MenuIcon from "./MenuIcon";
+import UserIcon from "./UserIcon";
+import UserSolidIcon from "./UserSolidIcon";
+import EyeIcon from "./EyeIcon";
+import XMarkIcon from "./XMarkIcon";
+import Spinner from "./Spinner";
+import PlusIcon from "./PlusIcon";
+import MinusIcon from "./MinusIcon";
+import AdjustmentsHorizontalIcon from "./AdjustmentsHorizontalIcon";
+import Wave from "../pageDecorations/Wave";
+import DoneIcon from "./DoneIcon";
+
+export { PencilSquareIcon, PencilIcon, TrashIcon, StarIcon, StarSolidIcon, HeartIcon, HeartSolidIcon, ChevronUpIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ArrowRightIcon, ArrowLeftIcon, BagIcon, MenuIcon, UserIcon, UserSolidIcon, EyeIcon, XMarkIcon, Spinner, PlusIcon, MinusIcon, AdjustmentsHorizontalIcon, Wave, DoneIcon };
