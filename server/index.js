@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5001;
 const connectDB = require('./config/connectDB');
 const { authRoutes, userRoutes, productRoutes, productCollectionRoutes, categoryRoutes, subcategoryRoutes, orderRoutes } = require('./routes/index');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
+const corsOptions = require('./config/corsOptions');
 
 const start = () => {
     connectDB().then(() => {
@@ -22,7 +23,7 @@ start();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors(corsOptions));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
