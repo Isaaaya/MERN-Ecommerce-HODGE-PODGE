@@ -1,4 +1,4 @@
-import { Button } from "../Common/index";
+import { Button } from "../components/Common/index";
 
 const NotFoundPage = () => {
   return (
