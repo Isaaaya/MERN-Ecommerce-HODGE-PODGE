@@ -15,13 +15,13 @@ const WhyUs = () => {
             {whyUsValues.map((value) => (
               <div
                 key={value.caption}
-                className="flex flex-col items-center h-full gap-4 text-center"
+                className="flex flex-col items-center justify-start h-full gap-4"
               >
-                <div className="space-y-4">
+                <div className="flex flex-col items-center gap-3">
                   <h2 className="text-4xl font-extrabold tracking-wider text-[#b063a8] font-headerCurved">
                     {value.caption}
                   </h2>
-                  <p className="text-lg text-white/[0.9] w-60">
+                  <p className="text-lg text-white/[0.9] w-fit max-w-[300px]">
                     {value.content}
                   </p>
                 </div>

@@ -100,7 +100,7 @@ export const whyUsValues = [
     },
     {
         caption: 'delivered anywhere',
-        content: 'Our gifts, beautifully packaged, travel globally to make every moment special.',
+        content: 'Our gifts, beautifully packaged, travel globally to make moments special.',
     },
 ];
 
