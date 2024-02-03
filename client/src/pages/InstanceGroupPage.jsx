@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { ProductsFeed } from "components/Product";
 import { SortingSelector } from "components/Sorting";
 import { FilterButton } from "components/Filters";
-import { SearchBar } from "components/Common/index.js";
+import { SearchBar } from "../Common/index";
 import Pagination from "components/Pagination/Pagination";
 import { CollectionBanner } from "components/CollectionBanner";
 import { CollectionBannerSkeleton } from "components/Skeletons";

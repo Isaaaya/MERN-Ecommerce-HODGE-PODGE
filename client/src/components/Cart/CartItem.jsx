@@ -5,7 +5,7 @@ import { useRemoveManyFromCart } from "hooks/cart/useRemoveManyFromCart";
 
 import { TrashIcon } from "assets/icons";
 import { CartItemQuantityManager } from "components/Cart";
-import { Button } from "components/Common/index.js";
+import { Button } from "../Common/index";
 
 const CartItem = ({
   product,
