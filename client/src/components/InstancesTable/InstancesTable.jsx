@@ -1,6 +1,6 @@
 import { useGetInstanceGroupData } from "hooks/instance/useGetInstanceGroupData";
 
-import { InstanceDataRow } from "components/InstancesTable";
+import { InstanceDataRow } from "Components/InstancesTable";
 
 const InstancesTable = ({ instances }) => {
   const { fieldsTitles } = useGetInstanceGroupData();

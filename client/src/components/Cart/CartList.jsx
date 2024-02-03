@@ -1,4 +1,4 @@
-import { CartItem } from "components/Cart";
+import { CartItem } from "Components/Cart";
 
 const CartList = ({ cart, extraStyles, closeCart }) => {
   return (

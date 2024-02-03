@@ -1,5 +1,5 @@
 import { footerNavigations } from "utils/constants";
-import { Separator, Logo } from "components/common";
+import { Separator, Logo } from "Components/Common";
 import { ArrowRightIcon } from "assets/icons";
 import { Container } from "layout";
 

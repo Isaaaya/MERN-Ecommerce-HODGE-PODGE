@@ -1,8 +1,8 @@
 import parse from "html-react-parser";
 
-import { AddToCartButton } from "components/Cart";
-import { ProductInfoSkeleton } from "components/skeletons";
-import ToggleWishlistButton from "components/Wishlist/ToggleWishlistButton";
+import { AddToCartButton } from "Components/Cart";
+import { ProductInfoSkeleton } from "Components/Skeletons";
+import ToggleWishlistButton from "Components/Wishlist/ToggleWishlistButton";
 
 const ProductInfo = ({ product, productAvailableQuantity }) => {
   if (product?._id)

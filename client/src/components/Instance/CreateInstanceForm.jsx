@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useCreateInstance } from "hooks/instance/useCreateInstance";
-import { HandleInstanceButton, InstancePicker } from "components/Instance";
+import { HandleInstanceButton, InstancePicker } from "Components/Instance";
 import { handleKeyDown } from "utils/functions/handleKeyDown";
 
 const CreateInstanceForm = ({ selectInstances, instanceType }) => {

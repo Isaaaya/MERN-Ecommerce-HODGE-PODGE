@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useGetUser } from "hooks/user/useGetUser";
 
-import { CartButton } from "components/Cart";
+import { CartButton } from "Components/Cart";
 import { OptionalHeaderLinksPanel } from "layout";
 
 const HeaderLinksPanel = () => {

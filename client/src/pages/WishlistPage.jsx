@@ -1,6 +1,6 @@
 import { useGetWishlist } from "hooks/wishlist/useGetWishlist";
 
-import { ProductsFeed } from "components/Product";
+import { ProductsFeed } from "Components/Product";
 import { Container } from "layout";
 
 const WishlistPage = () => {

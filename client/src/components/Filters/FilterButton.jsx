@@ -2,7 +2,7 @@ import { useState } from "react";
 import { usePreventScroll } from "hooks/preventScroll/usePreventScroll";
 
 import { AdjustmentsHorizontalIcon } from "assets/icons";
-import { FilterModal } from "components/Filters";
+import { FilterModal } from "Components/Filters";
 
 const FilterButton = ({ filters, setFilters, maxMinPrice }) => {
   const [isMainModalOpen, setIsMainModalOpen] = useState(false);

@@ -1,12 +1,12 @@
 import { Navigate } from "react-router-dom";
 
-import { ProductsFeed } from "components/Product";
-import { SortingSelector } from "components/Sorting";
-import { FilterButton } from "components/Filters";
-import { SearchBar } from "components/common";
-import Pagination from "components/Pagination/Pagination";
-import { CollectionBanner } from "components/CollectionBanner";
-import { CollectionBannerSkeleton } from "components/skeletons";
+import { ProductsFeed } from "Components/Product";
+import { SortingSelector } from "Components/Sorting";
+import { FilterButton } from "Components/Filters";
+import { SearchBar } from "Components/Common";
+import Pagination from "Components/Pagination/Pagination";
+import { CollectionBanner } from "Components/CollectionBanner";
+import { CollectionBannerSkeleton } from "Components/Skeletons";
 import { Container } from "layout";
 import { useInstanceGroupPage } from "hooks/instanceGroupPage/useInstanceGroupPage";
 

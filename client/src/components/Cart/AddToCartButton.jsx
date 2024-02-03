@@ -1,4 +1,4 @@
-import { Button } from "components/common";
+import { Button } from "Components/Common";
 import { useAddToCart } from "hooks/cart/useAddToCart";
 
 const AddToCartButton = ({ product, productAvailableQuantity }) => {

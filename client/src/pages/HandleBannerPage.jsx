@@ -2,13 +2,13 @@ import { useParams, Link } from "react-router-dom";
 import { handleChange } from "utils/functions/handleChange";
 import { useCollectionBanner } from "hooks/collectionBanner/useCollectionBanner";
 
-import { ImageUpload } from "components/Image";
+import { ImageUpload } from "Components/Image";
 import {
   ColorPickers,
   UpdateBannerButton,
   DeleteBannerButton,
   CreateBannerButton,
-} from "components/CollectionBanner";
+} from "Components/CollectionBanner";
 import { Container } from "layout";
 import { XMarkIcon } from "assets/icons";
 

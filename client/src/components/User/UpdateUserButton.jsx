@@ -1,4 +1,4 @@
-import { Button } from "components/common";
+import { Button } from "Components/Common";
 
 const UpdateUserButton = ({ updateUser, isUpdateUserPending, updatedUser }) => {
   const handleUpdateUser = () => {

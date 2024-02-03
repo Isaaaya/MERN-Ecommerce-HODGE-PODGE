@@ -1,4 +1,4 @@
-import { Tiptap } from "components/TipTap/Tiptap";
+import { Tiptap } from "Components/TipTap/Tiptap";
 import { productInputFields } from "utils/constants";
 import { camelize } from "utils/functions/camelize";
 import sanitizeHtml from "sanitize-html";

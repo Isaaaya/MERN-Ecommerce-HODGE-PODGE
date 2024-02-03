@@ -5,8 +5,8 @@ import { camelize } from "utils/functions/camelize";
 import { handleKeyDown } from "utils/functions/handleKeyDown";
 
 import { Spinner } from "assets/icons";
-import { UpdateUserButton } from "components/User";
-import { SignoutButton } from "components/Auth";
+import { UpdateUserButton } from "Components/User";
+import { SignoutButton } from "Components/Auth";
 import { Container } from "layout";
 
 const UserProfilePage = () => {

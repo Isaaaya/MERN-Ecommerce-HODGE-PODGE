@@ -1,4 +1,4 @@
-import { Button } from "components/common";
+import { Button } from "Components/Common";
 import { XMarkIcon } from "assets/icons";
 
 const RemoveImageButton = ({ removeImage, image }) => {

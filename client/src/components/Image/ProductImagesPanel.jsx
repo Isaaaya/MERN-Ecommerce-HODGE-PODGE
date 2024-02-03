@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ImagesCarousel, MainImage } from "components/Image";
+import { ImagesCarousel, MainImage } from "Components/Image";
 
 const ProductImagesPanel = ({ images, title }) => {
   const [mainImageIndex, setMainImageIndex] = useState(0);

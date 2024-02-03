@@ -1,5 +1,5 @@
 import { Spinner } from "assets/icons";
-import { Button } from "components/common";
+import { Button } from "Components/Common";
 import { useAddToCart } from "hooks/cart/useAddToCart";
 import { useRemoveOneFromCart } from "hooks/cart/useRemoveOneFromCart";
 

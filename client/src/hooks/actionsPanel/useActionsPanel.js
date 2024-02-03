@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { DeleteInstanceButton } from 'components/Instance/index';
-import { HandleBannerLink } from 'components/CollectionBanner/index';
-import { ViewOrderInfoButton } from 'components/Order/index';
+import { DeleteInstanceButton } from 'Components/Instance/index';
+import { HandleBannerLink } from 'Components/CollectionBanner/index';
+import { ViewOrderInfoButton } from 'Components/Order/index';
 import {
     StartUpdatingModeButton
-} from "components/InstancesTable"
+} from "Components/InstancesTable"
 
 
 export const useActionsPanel = ({ instanceId, setIsUpdatingMode, advancedUpdate }) => {
