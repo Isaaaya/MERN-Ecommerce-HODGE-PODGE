@@ -1,7 +1,7 @@
 import { useGetProducts } from "hooks/product/useGetProducts";
 
 import { ProductsFeed } from "components/Product";
-import { Banner, WhyUs } from "components/Common/index";
+import { Banner, WhyUs } from "components/Common/index.js";
 import { Container } from "layout";
 import { useScrollToTop } from "hooks/scrollToTop/useScrollToTop";
 

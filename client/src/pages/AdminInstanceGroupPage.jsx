@@ -5,7 +5,7 @@ import { useAdminInstanceGroupPage } from "hooks/adminInstanceGroupPage/useAdmin
 import { Spinner } from "assets/icons";
 import { InstancesTable } from "components/InstancesTable";
 import { CreateInstanceForm } from "components/Instance";
-import { SearchBar } from "components/Common/index";
+import { SearchBar } from "components/Common/index.js";
 import Pagination from "components/Pagination/Pagination";
 import { Container } from "layout";
 import { InstancesTableSkeleton } from "components/Skeletons";

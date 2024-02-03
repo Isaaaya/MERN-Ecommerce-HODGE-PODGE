@@ -1,4 +1,4 @@
-import { Button } from "components/Common/index";
+import { Button } from "components/Common/index.js";
 
 const HandleInstanceButton = ({
   caption,

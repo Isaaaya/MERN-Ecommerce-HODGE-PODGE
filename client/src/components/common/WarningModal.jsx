@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { useWarningModal } from "hooks/warningModal/useWarningModal";
 
-import { Button } from "components/Common/index";
+import { Button } from "components/Common/index.js";
 
 const WarningModal = ({
   isWarningModalOpen,
