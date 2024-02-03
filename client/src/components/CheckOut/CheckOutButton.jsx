@@ -1,4 +1,4 @@
-import { Button } from "Components/Common";
+import { Button } from "components/Common";
 import { Link } from "react-router-dom";
 
 const CheckOutButton = ({ closeCart }) => {

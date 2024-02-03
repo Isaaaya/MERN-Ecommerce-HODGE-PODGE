@@ -1,4 +1,4 @@
-import { WarningModal } from "Components/Common";
+import { WarningModal } from "components/Common";
 
 import { TrashIcon } from "assets/icons";
 import { useState } from "react";

@@ -6,7 +6,7 @@ import { useAuth } from "hooks/auth/useAuth";
 import { camelize } from "utils/functions/camelize";
 
 import { Container } from "layout";
-import { AuthButton } from "Components/Auth";
+import { AuthButton } from "components/Auth";
 import { getAuthCaptions } from "utils/functions/getAuthCaptions";
 
 const AuthPage = () => {

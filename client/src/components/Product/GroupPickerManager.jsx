@@ -1,4 +1,4 @@
-import { ProductFormGroupPicker } from "Components/Product";
+import { ProductFormGroupPicker } from "components/Product";
 import { useGroupPickerValues } from "hooks/groupPickerValues/useGroupPickerValues";
 
 const GroupPickerManager = ({ product, setProduct }) => {

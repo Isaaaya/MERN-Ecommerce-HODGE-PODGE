@@ -4,7 +4,7 @@ import {
     AvailabilityFilter,
     ImagesFilter,
     PriceFilter,
-} from "Components/Filters"
+} from "components/Filters"
 
 export const useFilterModal = () => {
     const [isAvailabilityExpanded, setIsAvailabilityExpanded] = useState(false);

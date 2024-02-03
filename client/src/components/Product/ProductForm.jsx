@@ -1,6 +1,6 @@
-import { ImagesManager } from "Components/Image";
-import { HandleInstanceButton } from "Components/Instance";
-import { GroupPickerManager, ProductInputFields } from "Components/Product";
+import { ImagesManager } from "components/Image";
+import { HandleInstanceButton } from "components/Instance";
+import { GroupPickerManager, ProductInputFields } from "components/Product";
 import { useProductForm } from "hooks/product/useProductForm";
 
 const ProductForm = ({ mode }) => {

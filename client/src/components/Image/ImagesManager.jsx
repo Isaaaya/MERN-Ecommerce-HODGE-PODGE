@@ -1,8 +1,8 @@
-import { ImageUpload } from "Components/Image";
+import { ImageUpload } from "components/Image";
 import { useImagesManager } from "hooks/imagesManager/useImagesManager";
 import { optimizeImage } from "utils/functions/optimizeImage";
 import Placeholder from "assets/images/placeholder.webp";
-import { SetMainImageButton, RemoveImageButton } from "Components/Image";
+import { SetMainImageButton, RemoveImageButton } from "components/Image";
 
 const ImagesManager = ({ images, setValue }) => {
   const {

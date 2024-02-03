@@ -5,21 +5,21 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { CartProvider } from 'context/LocalCartContext.js';
 import { SideNavMenuProvider } from 'context/SideNavMenuContext';
 
-import { ProductPage, HomePage, ErrorFallbackPage, NotFoundPage } from 'Pages/index';
+import { ProductPage, HomePage, ErrorFallbackPage, NotFoundPage } from 'pages/index';
 
-import InstanceGroupPage from 'Pages/InstanceGroupPage';
+import InstanceGroupPage from 'pages/InstanceGroupPage';
 import { Spinner } from 'assets/icons';
 import { AdminPageLayout, Footer, Header } from 'layout/index';
 import { ProtectedAdminRoute, ProtectedUserRoute } from 'protectedRoutes'
 
-const WishlistPage = lazy(() => import('Pages/WishlistPage'));
-const UserProfilePage = lazy(() => import('Pages/UserProfilePage'));
-const AdminProductPage = lazy(() => import('Pages/AdminProductPage'));
-const AdminInstanceGroupPage = lazy(() => import('Pages/AdminInstanceGroupPage'));
-const AuthPage = lazy(() => import('Pages/AuthPage'));
-const HandleBannerPage = lazy(() => import('Pages/HandleBannerPage'));
-const CheckOutPage = lazy(() => import('Pages/CheckOutPage'));
-const CompletedCheckOutPage = lazy(() => import('Pages/CompletedCheckOutPage'));
+const WishlistPage = lazy(() => import('pages/WishlistPage'));
+const UserProfilePage = lazy(() => import('pages/UserProfilePage'));
+const AdminProductPage = lazy(() => import('pages/AdminProductPage'));
+const AdminInstanceGroupPage = lazy(() => import('pages/AdminInstanceGroupPage'));
+const AuthPage = lazy(() => import('pages/AuthPage'));
+const HandleBannerPage = lazy(() => import('pages/HandleBannerPage'));
+const CheckOutPage = lazy(() => import('pages/CheckOutPage'));
+const CompletedCheckOutPage = lazy(() => import('pages/CompletedCheckOutPage'));
 
 const SuspenseLayout = () => (
   <Suspense fallback={<div className='flex items-center justify-center h-screen'><Spinner width="25" height="25" /></div>}>

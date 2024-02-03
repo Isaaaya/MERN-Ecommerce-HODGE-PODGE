@@ -3,8 +3,8 @@ import { useActionsPanel } from "hooks/actionsPanel/useActionsPanel";
 import {
   CancelUpdatingInstanceButton,
   UpdateInstanceButton,
-} from "Components/Instance";
-import { OrderDetailsModal } from "Components/Order";
+} from "components/Instance";
+import { OrderDetailsModal } from "components/Order";
 
 const ActionsPanel = ({
   isUpdatingMode,

@@ -3,8 +3,8 @@ import { useGetUserCart } from "hooks/cart/useGetUserCart";
 import { useHandleOrder } from "hooks/order/useHandleOrder";
 
 import { Container } from "layout";
-import { OrderArticle } from "Components/Order";
-import { CheckOutForm, CheckOutCart } from "Components/CheckOut";
+import { OrderArticle } from "components/Order";
+import { CheckOutForm, CheckOutCart } from "components/CheckOut";
 
 const CheckOutPage = () => {
   const user = getUserData();

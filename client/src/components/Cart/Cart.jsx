@@ -1,8 +1,8 @@
 import { usePreventScroll } from "hooks/preventScroll/usePreventScroll";
 
 import { XMarkIcon } from "assets/icons";
-import { CheckOutButton } from "Components/CheckOut";
-import { CartList, CloseCartButton } from "Components/Cart";
+import { CheckOutButton } from "components/CheckOut";
+import { CartList, CloseCartButton } from "components/Cart";
 
 const Cart = ({ cart, cartTotalPrice, isCartOpen, closeCart }) => {
   usePreventScroll({ condition: isCartOpen });

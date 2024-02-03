@@ -1,6 +1,6 @@
 import { useGetHandleProductMode } from "hooks/product/useGetHandleProductMode";
 
-import { ProductForm } from "Components/Product";
+import { ProductForm } from "components/Product";
 import { Container } from "layout";
 import { useScrollToTop } from "hooks/scrollToTop/useScrollToTop";
 

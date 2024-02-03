@@ -2,7 +2,7 @@ import {
   TitleCell,
   CollectionCell,
   CategoryCell,
-} from "Components/InstancesTable";
+} from "components/InstancesTable";
 
 const InstanceDataCell = ({
   isUpdatingMode,

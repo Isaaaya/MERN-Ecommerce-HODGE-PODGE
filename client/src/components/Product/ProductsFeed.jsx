@@ -1,5 +1,5 @@
-import { ProductCard } from "Components/Product";
-import { ProductCardSkeleton } from "Components/Skeletons";
+import { ProductCard } from "components/Product";
+import { ProductCardSkeleton } from "components/Skeletons";
 
 const ProductsFeed = ({
   products,

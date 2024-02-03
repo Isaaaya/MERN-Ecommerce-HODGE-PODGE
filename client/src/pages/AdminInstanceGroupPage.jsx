@@ -3,12 +3,12 @@ import { Navigate } from "react-router-dom";
 import { useAdminInstanceGroupPage } from "hooks/adminInstanceGroupPage/useAdminInstanceGroupPage";
 
 import { Spinner } from "assets/icons";
-import { InstancesTable } from "Components/InstancesTable";
-import { CreateInstanceForm } from "Components/Instance";
-import { SearchBar } from "Components/Common";
-import Pagination from "Components/Pagination/Pagination";
+import { InstancesTable } from "components/InstancesTable";
+import { CreateInstanceForm } from "components/Instance";
+import { SearchBar } from "components/Common";
+import Pagination from "components/Pagination/Pagination";
 import { Container } from "layout";
-import { InstancesTableSkeleton } from "Components/Skeletons";
+import { InstancesTableSkeleton } from "components/Skeletons";
 
 const AdminInstanceGroupPage = () => {
   const {

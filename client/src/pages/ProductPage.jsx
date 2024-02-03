@@ -7,8 +7,8 @@ import {
   ProductsFeed,
   ProductInfo,
   ProductNavigation,
-} from "Components/Product";
-import { ProductImagesPanel } from "Components/Image";
+} from "components/Product";
+import { ProductImagesPanel } from "components/Image";
 import { Container } from "layout";
 
 const ProductPage = () => {

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Logo, RunningLine } from "Components/Common";
+import { Logo, RunningLine } from "components/Common";
 import { Navbar, HeaderLinksPanel, SideNavMenuButton, Container } from "layout";
 
 const Header = () => {

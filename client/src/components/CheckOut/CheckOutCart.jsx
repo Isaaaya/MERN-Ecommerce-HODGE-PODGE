@@ -1,4 +1,4 @@
-import { CartList } from "Components/Cart";
+import { CartList } from "components/Cart";
 
 const CheckOutCart = ({ cart, cartTotalPrice }) => {
   return (

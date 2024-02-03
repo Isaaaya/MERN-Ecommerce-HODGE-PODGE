@@ -2,7 +2,7 @@ import { useState } from "react";
 import { fetchByDotOperator } from "utils/functions/fetchByDotOperator";
 import { useGetInstanceGroupData } from "hooks/instance/useGetInstanceGroupData";
 
-import { InstanceDataCell, ActionsPanel } from "Components/InstancesTable";
+import { InstanceDataCell, ActionsPanel } from "components/InstancesTable";
 
 const InstanceDataRow = ({ instance }) => {
   const [updatedInstance, setUpdatedInstance] = useState(null);

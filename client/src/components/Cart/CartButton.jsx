@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGetUserCart } from "hooks/cart/useGetUserCart";
 
 import { BagIcon } from "assets/icons";
-import { Cart } from "Components/Cart";
+import { Cart } from "components/Cart";
 
 const CartButton = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

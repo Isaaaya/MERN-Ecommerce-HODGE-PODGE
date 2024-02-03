@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useRemoveManyFromCart } from "hooks/cart/useRemoveManyFromCart";
 
 import { TrashIcon } from "assets/icons";
-import { CartItemQuantityManager } from "Components/Cart";
-import { Button } from "Components/Common";
+import { CartItemQuantityManager } from "components/Cart";
+import { Button } from "components/Common";
 
 const CartItem = ({
   product,
