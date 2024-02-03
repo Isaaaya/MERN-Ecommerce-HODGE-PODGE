@@ -1,6 +1,6 @@
 import { useSignout } from "hooks/auth/useSignout";
 
-import { Button } from "../Common/index";
+import { Button } from "../common/index";
 
 const SignoutButton = () => {
   const { signout } = useSignout();

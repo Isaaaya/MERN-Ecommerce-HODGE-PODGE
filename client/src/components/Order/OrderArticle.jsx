@@ -1,5 +1,5 @@
 import { useCreateOrder } from "hooks/order/useCreateOrder";
-import { Button } from "../Common/index";
+import { Button } from "../common/index";
 
 const OrderArticle = ({ totalItems, totalPrice, order }) => {
   const { createOrder, isCreateOrderPending } = useCreateOrder({

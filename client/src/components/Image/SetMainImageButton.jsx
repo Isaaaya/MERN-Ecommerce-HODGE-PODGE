@@ -1,4 +1,4 @@
-import { Button } from "../Common/index";
+import { Button } from "../common/index";
 import { StarIcon, StarSolidIcon } from "assets/icons";
 
 const SetMainImageButton = ({ isMainImage, image, setMainImage }) => {
