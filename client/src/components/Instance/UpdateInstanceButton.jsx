@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useUpdateInstance } from "hooks/instance/useUpdateInstance";
-import { Button } from "components/Common";
+import { Button } from "components/Common/index";
 import { DoneIcon } from "assets/icons";
 
 const UpdateInstanceButton = ({

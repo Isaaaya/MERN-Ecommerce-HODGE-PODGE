@@ -1,4 +1,4 @@
-import { Button } from "components/Common";
+import { Button } from "components/Common/index";
 
 const AuthButton = ({ auth, isAuthPending, mode }) => {
   return (

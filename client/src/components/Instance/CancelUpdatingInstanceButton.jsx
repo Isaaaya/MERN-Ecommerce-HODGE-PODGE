@@ -1,4 +1,4 @@
-import { Button } from "components/Common";
+import { Button } from "components/Common/index";
 import { XMarkIcon } from "assets/icons";
 
 const CancelUpdatingInstanceButton = ({ setIsUpdatingMode }) => {
