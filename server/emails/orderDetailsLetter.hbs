@@ -15,34 +15,27 @@
       font-weight: bold;
    }
 
-   img {
-      width: 70px; 
-      height: 70px; 
-      border-radius: 5px; 
-      object-fit: cover;
-   }
-  
 </style>
 </head>
 <body style="">
    <p style="font-size: 29px; font-weight: bold; line-height:80%; color: black; width: fit-content; margin: 0 auto;"><span>·</span> HODGE <span>·</span> PODGE&nbsp;<span>·</span></p>
-   <p style="font-size: 20px; padding: 10px; font-weight:500; color: black;">Your order:</p>
+   <p style="font-size: 20px; padding: 15px; font-weight:500; color: black;">Your order:</p>
    <div>
       {{#each productsFullInfo}}
          <div style="display: flex; margin-bottom: 20px;">
             {{#if this.product.images.[0]}}
-               <img src={{this.product.images.[0]}} alt={{this.product.title}} />
+               <img style='width: 70px; height: 70px; border-radius: 5px; object-fit: cover;' src={{this.product.images.[0]}} alt={{this.product.title}} />
               {{else}}
-               <img src="cid:placeholder" alt="Product Placeholder">
+               <div style='width: 70px; height: 70px; border-radius: 5px; background-color: rgb(205, 202, 202);' />
                {{/if}}
                 <div style="margin-left: 10px;">
                <p style="font-size: 17px; font-weight:600; color: black;">{{this.product.title}}</p>
-               <p>Price: ${{this.product.price}}</p>
-                <p>Quantity: {{this.quantity}}</p>
+               <p style="color: rgb(92, 88, 88);">Price: ${{this.product.price}}</p>
+               <p style="color: rgb(92, 88, 88);">Quantity: {{this.quantity}}</p>
               </div>
                 </div>
               {{/each}}
-          <p style="font-size: 17px; text-align: start; margin-top: 10px; margin-bottom: 15px; font-weight:600;">Total price: ${{totalPrice}}</p>
+          <p style="font-size: 17px; text-align: start; margin-top: 10px; margin-bottom: 15px; font-weight:600; color: rgb(48, 46, 46);">Total price: ${{totalPrice}}</p>
     <p width="70%" style="font-size: 14px; text-align: justify;">The order #{{_id}} has been successfully confirmed. Thank You for the order! We will contact You, when the status of Your order changes.</span> If it was not You, the one ordering from our store, please, contact our support team.&nbsp;</p>    
    </div>
 </body>

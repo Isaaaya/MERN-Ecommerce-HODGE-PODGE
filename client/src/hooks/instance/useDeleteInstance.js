@@ -9,7 +9,14 @@ export const useDeleteInstance = ({ instanceType, instanceId }) => {
     const { mutate: deleteInstance, isPending: isDeleteInstancePending } = useMutation({
         mutationFn: () => deleteInstanceAPI({ instanceType, instanceId }),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [instanceType] });
+            if (instanceType === 'products') {
+                queryClient.invalidateQueries({ queryKey: ['products'] })
+            }
+            else {
+                queryClient.invalidateQueries({ queryKey: [instanceType] });
+                queryClient.invalidateQueries({ queryKey: ['productCollections'] });
+                queryClient.invalidateQueries({ queryKey: ['categories'] });
+            }
         },
         onError: (error) => error.response.data.errors.map((err) => toast.error(err.msg))
     });

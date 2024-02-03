@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getCategoryTitleColor } from "utils/functions/getCategoryTitleColor";
 
 import { ChevronDownIcon } from "assets/icons";
 
@@ -15,15 +16,16 @@ const CollectionLink = ({ collection }) => {
         )}
       </Link>
       <div
-        className={`border absolute left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] bg-white py-3 hidden min-h-[150px] shadow-lg z-50 ${
+        className={`border absolute left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] bg-white overflow-x-auto py-3 hidden min-h-[150px] shadow-lg z-50 ${
           collection?.categories?.length > 0 && "group-hover:block"
         }`}
       >
         <div className="w-[95%] md:w-[85%] mx-auto flex gap-8">
-          {collection?.categories?.map((category) => (
+          {collection?.categories?.map((category, index) => (
             <div key={category?._id}>
               <Link
-                className="text-[#7b0b45] text-lg font-semibold"
+                className="font-serif font-semibold"
+                style={{ color: getCategoryTitleColor(index) }}
                 to={`/categories/${category?._id}`}
               >
                 {category?.title}

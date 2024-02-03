@@ -6,7 +6,7 @@ const validateCreateSubcategory = [
     check('title')
         .trim().exists({ checkFalsy: true }).withMessage('Subcategory title is required').bail()
         .isLength({ min: 3, max: 40 }).withMessage('Subcategory title must be between 3 and 40 characters').bail()
-        .matches(/^[a-zA-Z0-9&]+$/).withMessage('Subcategory title can contain only letters, numbers, and ampersands').bail(),
+        .matches(/^[a-zA-Z0-9& ]+$/).withMessage('Subcategory title can contain only letters, numbers, and ampersands').bail(),
     check('parentGroupId')
         .trim().exists({ checkFalsy: true }).withMessage('Parent group ID is required').bail()
         .custom(async (value) => {
@@ -43,7 +43,7 @@ const validateUpdateSubcategory = [
         .optional()
         .trim().exists({ checkFalsy: true }).withMessage('Subcategory title is required').bail()
         .isLength({ min: 3, max: 40 }).withMessage('Subcategory title must be between 3 and 40 characters').bail()
-        .matches(/^[a-zA-Z0-9&]+$/).withMessage('Subcategory title can contain only letters, numbers, and ampersands').bail(),
+        .matches(/^[a-zA-Z0-9& ]+$/).withMessage('Subcategory title can contain only letters, numbers, and ampersands').bail(),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

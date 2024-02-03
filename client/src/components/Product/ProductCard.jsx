@@ -30,7 +30,7 @@ const ProductCard = ({
               images?.length > 0
                 ? `${optimizeImage(images[0], 275, 275)} 275w,
                    ${optimizeImage(images[0], 550, 550)} 550w,
-                   ${optimizeImage(images[0], 1200, 1200)} 1200w`
+                   ${optimizeImage(images[0], 900, 900)} 1200w`
                 : ""
             }
             alt={title}

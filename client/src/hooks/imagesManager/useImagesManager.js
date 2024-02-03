@@ -1,5 +1,7 @@
+import { useState } from "react";
 
 export const useImagesManager = ({ setValue, images }) => {
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const removeImage = (selectedImage) => {
         setValue((prevState) => ({
             ...prevState,
@@ -24,5 +26,5 @@ export const useImagesManager = ({ setValue, images }) => {
         }));
     };
 
-    return { removeImage, setMainImage, setImages }
+    return { removeImage, setMainImage, setImages, selectedImageIndex, setSelectedImageIndex }
 }

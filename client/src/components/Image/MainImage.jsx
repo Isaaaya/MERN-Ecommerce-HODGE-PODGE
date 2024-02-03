@@ -14,9 +14,9 @@ const MainImage = ({ images, mainImageIndex, title }) => {
         }
         srcSet={
           images?.length > 0
-            ? `${optimizeImage(images[0], 300, 300)} 300w,
-               ${optimizeImage(images[0], 500, 500)} 710w,
-               ${optimizeImage(images[0], 1300, 1300)} 1420w`
+            ? `${optimizeImage(images[mainImageIndex], 300, 300)} 300w,
+               ${optimizeImage(images[mainImageIndex], 500, 500)} 710w,
+               ${optimizeImage(images[mainImageIndex], 1300, 1300)} 1420w`
             : ""
         }
         alt={title}

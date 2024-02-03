@@ -2,7 +2,7 @@ import { useImageUpload } from "hooks/imageUpload/useImageUpload";
 import Placeholder from "assets/images/placeholder.webp";
 import { Spinner } from "assets/icons";
 
-function ImageUpload({ setValue, imageUrl, images }) {
+function ImageUpload({ setValue, imageUrl, images, selectedImageIndex }) {
   const { preview, uploadImage, isUploadPicturePending, clearInput } =
     useImageUpload({
       setValue,
@@ -32,7 +32,11 @@ function ImageUpload({ setValue, imageUrl, images }) {
           <Spinner width="40" height="40" />
         ) : (
           <img
-            src={preview || Placeholder}
+            src={
+              selectedImageIndex
+                ? images[selectedImageIndex]
+                : preview || Placeholder
+            }
             alt="preview"
             className="w-[100%] h-[100%] object-cover"
           />

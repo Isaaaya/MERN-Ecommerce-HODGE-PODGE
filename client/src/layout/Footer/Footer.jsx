@@ -5,7 +5,7 @@ import { Container } from "layout";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#131313] text-white/[0.7] py-12 w-[100%]">
+    <footer className="bg-[#1e1d1d] text-white/[0.7] py-12 w-[100%]">
       <Container>
         <>
           <Logo theme="dark" />

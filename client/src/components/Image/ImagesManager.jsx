@@ -5,15 +5,25 @@ import Placeholder from "assets/images/placeholder.webp";
 import { SetMainImageButton, RemoveImageButton } from "components/Image";
 
 const ImagesManager = ({ images, setValue }) => {
-  const { removeImage, setMainImage, setImages } = useImagesManager({
+  const {
+    removeImage,
+    setMainImage,
+    setImages,
+    selectedImageIndex,
+    setSelectedImageIndex,
+  } = useImagesManager({
     setValue,
     images,
   });
 
   return (
     <div className="grid grid-cols-1 gap-5 px-5 md:grid-cols-2 md:mx-auto">
-      <ImageUpload images={images} setValue={setImages} />
-      <div className="grid max-md:grid-flow-col md:grid-cols-3 gap-3 overflow-x-auto h-24 md:max-h-[360px] w-fit max-w-full">
+      <ImageUpload
+        selectedImageIndex={selectedImageIndex}
+        images={images}
+        setValue={setImages}
+      />
+      <div className="grid max-md:grid-flow-col md:grid-cols-3 gap-3 overflow-x-auto md:max-h-[360px] w-fit h-fit max-w-full max-h-full">
         {images?.map((image, index) => (
           <div
             key={index}
@@ -21,11 +31,12 @@ const ImagesManager = ({ images, setValue }) => {
           >
             <img
               src={optimizeImage(image, 120, 120)}
+              onClick={() => setSelectedImageIndex(index)}
               style={{
                 background: `url(${Placeholder})`,
               }}
               alt="Product"
-              className="object-cover w-full h-full border-2 rounded-lg"
+              className="object-cover w-full h-full rounded-lg cursor-pointer"
             />
             <RemoveImageButton image={image} removeImage={removeImage} />
             <SetMainImageButton

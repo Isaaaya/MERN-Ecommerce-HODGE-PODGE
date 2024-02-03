@@ -1,7 +1,7 @@
 import { useGetProducts } from "hooks/product/useGetProducts";
 
 import { ProductsFeed } from "components/Product";
-import { Banner, FeauturedInfo, WhyUs } from "components/common";
+import { Banner, WhyUs } from "components/common";
 import { Container } from "layout";
 import { useScrollToTop } from "hooks/scrollToTop/useScrollToTop";
 
@@ -20,7 +20,6 @@ const HomePage = () => {
           products={products}
           areProductsLoading={areProductsLoading}
         />
-        <FeauturedInfo />
       </Container>
       <WhyUs />
     </main>

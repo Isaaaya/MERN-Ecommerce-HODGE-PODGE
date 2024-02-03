@@ -27,6 +27,7 @@ export const useInstanceGroupPage = () => {
         page,
         search,
         filters,
+        limit: 10,
         sortingType,
         searchBy:
             instanceType === "productCollections"

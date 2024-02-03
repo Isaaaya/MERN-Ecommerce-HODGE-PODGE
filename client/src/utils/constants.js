@@ -10,7 +10,6 @@ import {
     UndoIcon,
     ParagraphIcon,
 } from "assets/icons/textEditorIcons";
-import GiftBoxImage from 'assets/images/gift-box.webp';
 
 export const headerLinks = [
     {
@@ -90,18 +89,18 @@ export const adminNavbarLinks = [
 
 export const whyUsValues = [
     {
-        caption: 'great gifts',
-        content: 'Hundreds of unique & inspiring gifts for hard to please.',
+        caption: 'wonderful presents',
+        content: 'Explore the collection of captivating gifts for the any recipient.',
+
     },
     {
-        caption: 'made personal',
-        content: 'All gifts are lovingly picked, packed & personalised in our London Studio.',
-        icon: GiftBoxImage,
-        iconReference: 'Gift Box Icon by Roundicons Premium'
+        caption: 'made for you',
+        content: 'Each gift is chosen, packed, and with care.',
+
     },
     {
-        caption: 'delivered globally',
-        content: 'Beautiful gift packaging with global express delivery.',
+        caption: 'delivered anywhere',
+        content: 'Our gifts, beautifully packaged, travel globally to make every moment special.',
     },
 ];
 
@@ -217,4 +216,15 @@ export const tiptapButtonsData = [
 ];
 
 
-export const shippingDetailsFields = ["First Name", "Last Name", "Street Address", "Apt Number", "State", "Zip"]
+export const shippingDetailsFields = ["First Name", "Last Name", "Street Address", "Apt Number", "State", "Zip"];
+
+
+export const categoryTitleColors = [
+    '#FC6C85',
+    '#fbb02d',
+    '#758bfd',
+    '#0B6623',
+    '#702670',
+    '#FF7518',
+    '#d8315b'
+]

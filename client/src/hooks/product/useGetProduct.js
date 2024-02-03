@@ -10,5 +10,5 @@ export const useGetProduct = () => {
         enabled: !!productId
     });
 
-    return { product, isProductFetching, isProductLoading };
+    return { product, isProductFetching, isProductLoading, productId };
 }

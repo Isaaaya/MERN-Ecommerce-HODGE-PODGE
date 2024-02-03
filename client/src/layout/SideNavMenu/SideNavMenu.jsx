@@ -12,7 +12,7 @@ const SideNavMenu = ({ closeSideNav, isSideNavMenuOpen }) => {
 
   const adminLink = user?.isAdmin && (
     <Link
-      className="self-end"
+      className="self-end text-[#0B6623] font-serif font-semibold"
       onClick={closeSideNav}
       aria-label="Go to Admin Products Page"
       to="/admin/products"
@@ -32,7 +32,7 @@ const SideNavMenu = ({ closeSideNav, isSideNavMenuOpen }) => {
     >
       <aside
         onClick={(e) => e.stopPropagation()}
-        className={`fixed top-0 left-0 h-screen bg-white border-2 transition-all duration-300 ease-in-out w-[70%] z-50 p-6 space-y-5 overflow-y-auto flex flex-col text-center ${
+        className={`fixed top-0 left-0 h-screen bg-white border-2 transition-all duration-300 ease-in-out w-[70%] z-50 p-6 space-y-10 overflow-y-auto flex flex-col text-center ${
           !isSideNavMenuOpen && "-translate-x-full"
         }`}
       >

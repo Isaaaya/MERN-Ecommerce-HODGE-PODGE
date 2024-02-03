@@ -12,9 +12,9 @@ import { ProductImagesPanel } from "components/Image";
 import { Container } from "layout";
 
 const ProductPage = () => {
-  useScrollToTop();
-  const { product } = useGetProduct();
-  const { products } = useGetProducts({ configData: { limit: 4 } });
+  const { product, productId } = useGetProduct();
+  const { products } = useGetProducts({ configData: { limit: 6 } });
+  useScrollToTop(productId);
 
   if (product === null) return <Navigate to="/" />;
   else
@@ -39,7 +39,11 @@ const ProductPage = () => {
           <p className="text-3xl text-center text-darkMain">
             You might also like
           </p>
-          <ProductsFeed products={products?.slice(0, 4)} />
+          <ProductsFeed
+            products={products
+              ?.filter((product) => product._id !== productId)
+              ?.splice(0, 4)}
+          />
         </Container>
       </section>
     );

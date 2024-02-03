@@ -1,29 +1,23 @@
-import BannerImage from "assets/images/store-banner.webp";
-import Placeholder from "assets/images/placeholder.webp";
-
-import { usePreloadImage } from "hooks/preloadImage/usePreloadImage";
-
 const Banner = () => {
-  const { isImageLoaded } = usePreloadImage(BannerImage);
-
+  const blurBallStyling = "absolute z-0 w-60 h-60 rounded-full blur-2xl";
   return (
-    <div className="relative z-0 shadow-lg">
-      {isImageLoaded ? (
-        <img
-          fetchpriority="high"
-          className="h-[700px] xs:h-[650px] sm:h-[600px] w-full object-cover brig brightness-55"
-          src={BannerImage || Placeholder}
-          alt="A store"
-        />
-      ) : (
-        <div
-          className="h-[700px] xs:h-[650px] sm:h-[600px] w-full object-cover brig brightness-55"
-          style={{ background: `url(${Placeholder})`, backgroundSize: "cover" }}
-        />
-      )}
-      <h1 className="absolute left-0 right-0 h-full font-serif text-6xl text-center text-white uppercase sm:top-1/3 top-20 w-[90%] mx-auto leading-normal">
-        Find here what you've been looking for
-      </h1>
+    <div className="relative pt-12 overflow-hidden md:py-20 h-[500px]">
+      <div
+        className={blurBallStyling + " bg-[#f6acb8] left-1/3 animate-pink"}
+      />
+      <div
+        className={
+          blurBallStyling + " bg-yellow-300/[0.7] right-1/2 animate-yellow"
+        }
+      />
+      <div
+        className={blurBallStyling + " bg-sky-300/[0.7] animate-blue right-1/2"}
+      />
+      <div className="relative z-10 h-fit">
+        <h1 className="font-serif text-6xl text-center uppercase w-[90%] mx-auto md:top-10 left-0 right-0 leading-normal z-10 absolute text-gray-700 h-fit">
+          Find here what you've been looking for
+        </h1>
+      </div>
     </div>
   );
 };

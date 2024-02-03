@@ -17,11 +17,11 @@ const WarningModal = ({
   return createPortal(
     <div
       onClick={closeWarningModal}
-      className="fixed top-0 w-full h-full bg-black/[0.3] flex items-center justify-center"
+      className="fixed top-0 w-full h-full bg-black/[0.3] flex items-center justify-center z-50"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-[500px] h-[300px] p-10 bg-white border-4 shadow-lg text-darkMain rounded-xl flex flex-col text-justify text-lg"
+        className="w-[500px] h-[300px] p-10 bg-white border-4 shadow-lg text-darkMain rounded-xl flex flex-col text-justify"
       >
         <p className="text-2xl font-bold">Procceed with the deletion?</p>
         <p className="pt-4">{warningContent} You cannot possibly restore it.</p>

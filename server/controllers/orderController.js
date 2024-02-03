@@ -60,11 +60,6 @@ exports.createOrder = asyncHandler(async (req, res) => {
             creationDate: newOrder?.createdAt,
             totalPrice,
         }),
-        attachments: [{
-            filename: 'placeholder',
-            path: '/Users/use/Downloads/node-projects/Ecommerce-MERN/server/assets/images/placeholder.webp',
-            cid: 'placeholder'
-        }],
     });
 
     await User.findOneAndUpdate({ email: userEmail }, {

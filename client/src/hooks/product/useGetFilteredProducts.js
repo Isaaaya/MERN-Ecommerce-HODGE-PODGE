@@ -5,6 +5,7 @@ import { useDebounce } from "hooks/debounce/useDebounce";
 export const useGetFilteredProducts = ({ instanceId, searchBy, page,
     search,
     filters,
+    limit,
     sortingType }) => {
 
     const debouncedSearch = useDebounce({ value: search, delay: 450 })
@@ -21,6 +22,7 @@ export const useGetFilteredProducts = ({ instanceId, searchBy, page,
                 [searchBy]: instanceId,
                 search: debouncedSearch,
                 page,
+                limit,
                 sort: sortingType,
                 available: filters?.available?.reduce(
                     (accumulator, availableOption) =>

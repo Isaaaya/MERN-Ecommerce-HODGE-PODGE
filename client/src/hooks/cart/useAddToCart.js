@@ -8,6 +8,7 @@ export const useAddToCart = (product) => {
     const user = getUserData();
     const queryClient = useQueryClient();
 
+
     const { mutate: add, isPending: isAddToCartPending } = useMutation({
         mutationFn: () => addToCartAPI({ productId: product?._id }),
         onSuccess: () => {

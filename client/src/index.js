@@ -4,8 +4,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ToastContainer } from 'react-toastify';
-import { HelmetProvider } from "react-helmet-async";
 import 'react-toastify/dist/ReactToastify.css';
+
+import { disableReactDevTools } from '@fvilers/disable-react-devtools'
+
+if (process.env.NODE_ENV === 'production') disableReactDevTools();
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,16 +21,16 @@ const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-      <ToastContainer position="top-center"
-        autoClose={4000}
-        closeOnClick
-        pauseOnFocusLoss
-        theme="colored" />
-    </HelmetProvider>
+
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+    <ToastContainer position="top-center"
+      autoClose={4000}
+      closeOnClick
+      pauseOnFocusLoss
+      theme="colored" />
+
   </React.StrictMode>
 );
 

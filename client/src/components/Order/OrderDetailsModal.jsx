@@ -11,6 +11,7 @@ const OrderDetailsModal = ({ showOrderDetails, order }) => {
   return createPortal(
     <div className="fixed top-0 w-full h-full bg-black/[0.2] flex items-center justify-center">
       <article
+        onClick={(e) => e.stopPropagation()}
         className={`fixed top-1/2 bottom-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 self-center bg-white border-2 min-w-[85%] h-fit p-8 z-50 rounded-lg [&_div]:text-center space-y-12 text-center ${
           !showOrderDetails && "hidden"
         }`}
