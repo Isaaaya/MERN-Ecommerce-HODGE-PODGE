@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -33,6 +34,12 @@ app.use('/api/productCollections', productCollectionRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subcategoryRoutes);
 app.use('/api/orders', orderRoutes);
+
+app.get('*', (req, res) => {
+
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+
+});
 
 app.use(notFound);
 app.use(errorHandler);
