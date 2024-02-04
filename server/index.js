@@ -26,13 +26,13 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/productCollections', productCollectionRoutes);
-app.use('/api/categories', categoryRoutes);
-app.use('/api/subcategories', subcategoryRoutes);
-app.use('/api/orders', orderRoutes);
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
+app.use('/products', productRoutes);
+app.use('/productCollections', productCollectionRoutes);
+app.use('/categories', categoryRoutes);
+app.use('/subcategories', subcategoryRoutes);
+app.use('/orders', orderRoutes);
 
 
 app.use(notFound);
